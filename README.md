@@ -19,5 +19,5 @@
 <br />
 
 ## Frameworks
-`Firestore`<img src= "https://github.com/lhbsaldana/itelective3-web/blob/main/images/firestore%20logo.svg" width = "40px" /> `Express` <img src= "https://github.com/lhbsaldana/itelective3-web/blob/main/images/express%20logo.svg" width = "40px" /> `AngularJS` <img src= "https://github.com/lhbsaldana/itelective3-web/blob/main/images/angular%20logo.svg" width = "40px" /> `Node.js`<img src= "https://github.com/lhbsaldana/itelective3-web/blob/main/images/nodejs%20logo.svg" width = "40px" />
+• `Firestore`<img src= "https://github.com/lhbsaldana/itelective3-web/blob/main/images/firestore%20logo.svg" width = "40px" /> • `Express` <img src= "https://github.com/lhbsaldana/itelective3-web/blob/main/images/express%20logo.svg" width = "40px" /> • `AngularJS` <img src= "https://github.com/lhbsaldana/itelective3-web/blob/main/images/angular%20logo.svg" width = "40px" /> • `Node.js`<img src= "https://github.com/lhbsaldana/itelective3-web/blob/main/images/nodejs%20logo.svg" width = "40px" />
 
