@@ -13,11 +13,14 @@
 </p>
 
 
-
 **System Description:**
 > For orders, the foreman is responsible for viewing the availability of the equipment, ordering new machinery, supervising delivery, and updating product quantity in the database. The customer views the products and orders their desired machinery. The salesperson manages the invoice from the products ordered by the customer and takes part in the delivery control of the equipment. For the delivery system, the warehouse worker updates the product quantity once delivery is confirmed, views the location of the equipment, and changes product location once it is delivered. The forklift driver transfers the orders from the warehouse to the pickup area, which are then collected by the truck driver and delivered to the customer. 
 
 <br />
 
-## Frameworks
-`Firestire`
+# Frameworks
+* `Firestore`
+* `Express`
+* `AngularJS`
+* `Node.js`
+
