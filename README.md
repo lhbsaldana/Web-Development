@@ -4,4 +4,5 @@
 > The DPWH Region 9 is tasked with planning, designing, constructing, and maintaining public work projects in the Zamboanga Peninsula.
 
 ## Equipment Monitoring System 
-<img align = "center" src= "https://github.com/lhbsaldana/itelective3-web/blob/53c20d08291ee007d22475dc504d81755d2fb8f0/DPWH_Logo-removebg-preview.png" width="80"/> 
+<img align = "center" src= "https://github.com/lhbsaldana/itelective3-web/blob/main/equipment%20monitoring%20system.PNG" height="500"/> 
+_Figure 1_ Use Case Diagram of DPWH Equipment Monitoring System  
