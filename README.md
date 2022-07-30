@@ -5,4 +5,4 @@
 
 ## Equipment Monitoring System 
 <img align = "center" src= "https://github.com/lhbsaldana/itelective3-web/blob/main/equipment%20monitoring%20system.PNG" height="500"/> 
-_Figure 1_ Use Case Diagram of DPWH Equipment Monitoring System  
+*Figure 1* Use Case Diagram of DPWH Equipment Monitoring System  
