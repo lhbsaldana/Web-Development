@@ -26,12 +26,12 @@ For orders, the foreman is responsible for viewing the availability of the equip
 </div>
 
 <br />
-
 ***
+
 <img width="50px" align = "left" src= "https://github.com/lhbsaldana/itelective3-web/blob/main/images/512px-Department_of_Public_Works_and_Highways_(DPWH).svg%20(1).png" /> 
 
 <div align="left"> 
-_Department of Public Works and Highways - Region IX_
+* Department of Public Works and Highways - Region 9 *
 </div>
 
 
