@@ -26,11 +26,11 @@ app.use((req,res,next) => {
 app.get('/',function(req,res){ 
     weather.find({search: 'Davao City', degreeType: 'C'}, function(err, result) {
         if(err) console.log(err);
-        var data = JSON.stringify(result,null,2);
-        var weatherData = { 
-            weatherToday : JSON.parse(data) //convert to JSON object
-        }
-        res.render('index', weatherData)
+        const data = JSON.stringify(result,null,2);
+        /*var weatherData = { 
+            weatherToday : data //convert to JSON object
+        }*/
+        res.render('index', {data})
     });
 }); 
 
