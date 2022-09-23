@@ -21,17 +21,16 @@ app.use((req,res,next) => {
     next();
 }); 
 
-weather.find({search: 'Davao City', degreeType: 'C'}, function(err, result) {
+const weather_today = weather.find({search: 'Davao City', degreeType: 'C'}, function(err, result) {
     if(err) console.log(err);
-   
     console.log(JSON.stringify(result, null, 2));
-  });
+});
 
 
 /*routing 
 '/' redirects end user to index.ejs page  */ 
 app.get('/',function(req,res){ 
-    res.render('index')
+    res.render('index', {weather_today: weather_today.location})
 }); 
 
 // '/other' redirects end user to other.ejs page 
