@@ -28,7 +28,7 @@ app.get('/',function(req,res){
         if(err) console.log(err);
         var data = JSON.stringify(result,null,2);
         var weatherData = { 
-            weatherToday : data
+            weatherToday : JSON.parse(data) //convert to JSON object
         }
         res.render('index', weatherData)
     });
