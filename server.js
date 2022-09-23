@@ -21,16 +21,17 @@ app.use((req,res,next) => {
     next();
 }); 
 
-var weather_today = weather.find({search: 'Davao City', degreeType: 'C'}, function(err, result) {
-    if(err) console.log(err);
-    //console.log(result, null, 2);
-});
-
-
 /*routing 
 '/' redirects end user to index.ejs page  */ 
 app.get('/',function(req,res){ 
-    res.render('index', weather_today)
+    weather.find({search: 'Davao City', degreeType: 'C'}, function(err, result) {
+        if(err) console.log(err);
+        var data = JSON.stringify(result,null,2);
+        var weatherData = { 
+            weatherToday : data
+        }
+        res.render('index', weatherData)
+    });
 }); 
 
 // '/other' redirects end user to other.ejs page 
