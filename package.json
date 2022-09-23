@@ -1,0 +1,31 @@
+{
+  "name": "weatherjs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lhbsaldana/itelective3-web.git"
+  },
+  "keywords": [
+    "weatherjs",
+    "express",
+    "ejs",
+    "node"
+  ],
+  "author": "Lannah Saldana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lhbsaldana/itelective3-web/issues"
+  },
+  "homepage": "https://github.com/lhbsaldana/itelective3-web#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1",
+    "weather-js": "^2.0.0"
+  }
+}
