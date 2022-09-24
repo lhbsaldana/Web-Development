@@ -20,17 +20,27 @@ app.use((req,res,next) => {
     console.log(`Method: ${req.method}`);
     next();
 }); 
+weather.find({search: 'Davao City', degreeType: 'C'}, function(err, result) {
+    if(err) console.log(err);
+    var data = result;
+    console.log(Object.getOwnPropertyNames(data))
+    console.log(data['0'].location)
+
+}); 
+
 
 /*routing 
 '/' redirects end user to index.ejs page  */ 
+
 app.get('/',function(req,res){ 
     weather.find({search: 'Davao City', degreeType: 'C'}, function(err, result) {
         if(err) console.log(err);
-        const data = JSON.stringify(result,null,2);
-        /*var weatherData = { 
+        var  data = result;
+        console.log(data)
+        var weatherData = { 
             weatherToday : data //convert to JSON object
-        }*/
-        res.render('index', {data})
+        }
+        res.render('index', weatherData)
     });
 }); 
 

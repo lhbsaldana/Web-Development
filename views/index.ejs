@@ -7,9 +7,8 @@
     <%/*studentData is shown on server side only, and not in browser */%>
 
     <h1><%= header; %></h1>
-    <p><%= data[{'location'}]; %></p>
-  
-
+    <p><%=  (Object.getOwnPropertyNames(weatherToday)); %></p>
+  <script src="server.js"></script>
  
   </body>
 </html>
