@@ -7,5 +7,21 @@
     <%/*studentData is shown on server side only, and not in browser */%>
     <h1><%= header; %></h1>
      <%#- include('./partials/navigation') %> 
+     <% let header = "Welcome to the Page"; %>
+    <%/*studentData is shown on server side only, and not in browser */%>
+
+    <h1><%= header; %></h1>
+    <p><%=  (weatherAPI['list'][0].dt_txt); %><%/*not finished*/%>
+    <% weatherAPI['list'].forEach(item => { %>
+      <p> 
+      <%= item.dt_txt; %>
+      </p>
+      <% }) %> 
+    <p><%=  (Object.getOwnPropertyNames(weatherAPI)); %></p> <%/*gets property names*/%>
+    <p><%=  (Object.getOwnPropertyNames(weatherJS)); %></p>
+    <p><%/* = (weatherAPI.weather['0'].description); */%></p>
+    <p><%=  (weatherJS['0'].location.name); %></p>
+    <p><%=  (weatherJS['0'].current.temperature); %></p>
+    <p><%=  (weatherJS['0'].forecast['0'].day); %></p>
   </body>
 </html>
