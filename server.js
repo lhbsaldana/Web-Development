@@ -48,7 +48,7 @@ app.get('/',function(req,res){
             weatherJS : dataJS}//convert to JSON object
         
         fetchUrl("https://api.openweathermap.org/data/2.5/weather?q=Davao&units=metric&appid=4a13c29e47abc7587b529fde28e8d6ba",function(error,meta,body){
-            dataAPI= body; 
+            dataAPI= JSON.parse(body); 
             var fromAPI = { 
                 weatherAPI : dataAPI }//convert to JSON object
 
