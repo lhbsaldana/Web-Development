@@ -22,9 +22,9 @@ app.use((req,res,next) => {
 }); 
 weather.find({search: 'Davao City', degreeType: 'C'}, function(err, result) {
     if(err) console.log(err);
-    var data = result;
+    var data = JSON.stringify(result);
     console.log(Object.getOwnPropertyNames(data))
-    console.log(data['0'].location)
+    console.log(data)
 
 }); 
 
