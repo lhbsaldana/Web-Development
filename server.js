@@ -21,7 +21,7 @@ app.use((req,res,next) => {
     console.log(`Method: ${req.method}`);
     next();
 }); 
-weather.find({search: 'Davao City', degreeType: 'C'}, function(err, result) {
+/*weather.find({search: 'Davao City', degreeType: 'C'}, function(err, result) {
     if(err) console.log(err);
     var data = JSON.stringify(result);
     console.log(Object.getOwnPropertyNames(data))
@@ -31,7 +31,7 @@ weather.find({search: 'Davao City', degreeType: 'C'}, function(err, result) {
 
 fetchUrl("https://api.openweathermap.org/data/2.5/weather?q=Davao&units=metric&appid=4a13c29e47abc7587b529fde28e8d6ba",function(error,meta,body){
         var result = body.toString();
-        console.log(result)});
+        console.log(result)});*/
 
 
 /*routing 
