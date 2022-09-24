@@ -7,10 +7,14 @@
     <%/*studentData is shown on server side only, and not in browser */%>
 
     <h1><%= header; %></h1>
-    <p><%=  (Object.getOwnPropertyNames(weatherToday)); %></p>
-    <p><%=  (weatherToday['0'].location.name); %></p>
-    <p><%=  (weatherToday['0'].current.temperature); %></p>
-    <p><%=  (weatherToday['0'].forecast['0'].day); %></p>
+    <p><%=  weatherAPI; %></p>
+    <p><%=  (Object.getOwnPropertyNames(weatherJS)); %></p>
+    <p><%=  (weatherJS['0'].location.name); %></p>
+    <p><%=  (weatherJS['0'].current.temperature); %></p>
+    <p><%=  (weatherJS['0'].forecast['0'].day); %></p>
+
+
+    
   <script src="server.js"></script>
  
   </body>

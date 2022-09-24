@@ -10,6 +10,7 @@ const path = require('path');
 var weather = require('weather-js')
 app.set('views',path.join(__dirname,'/views'));
 app.set('view engine','ejs'); 
+var fetchUrl = require("fetch").fetchUrl;
 
 app.listen(8080); //8080 is the port number 
 
@@ -28,19 +29,31 @@ weather.find({search: 'Davao City', degreeType: 'C'}, function(err, result) {
 
 }); 
 
+fetchUrl("https://api.openweathermap.org/data/2.5/weather?q=Davao&units=metric&appid=4a13c29e47abc7587b529fde28e8d6ba",function(error,meta,body){
+        var result = body;
+        console.log(result)});
+
 
 /*routing 
 '/' redirects end user to index.ejs page  */ 
 
+var city = "Davao City" 
+
 app.get('/',function(req,res){ 
-    weather.find({search: 'Davao City', degreeType: 'C'}, function(err, result) {
+    weather.find({search: city, degreeType: 'C'}, function(err, result) {
         if(err) console.log(err);
-        var  data = result;
-        console.log(data)
-        var weatherData = { 
-            weatherToday : data //convert to JSON object
-        }
-        res.render('index', weatherData)
+        var  dataJS = result; // object data 
+        console.log(dataJS)
+        var fromWeatherJS = { 
+            weatherJS : dataJS}//convert to JSON object
+        
+        fetchUrl("https://api.openweathermap.org/data/2.5/weather?q=Davao&units=metric&appid=4a13c29e47abc7587b529fde28e8d6ba",function(error,meta,body){
+            dataAPI= body; 
+            var fromAPI = { 
+                weatherAPI : dataAPI }//convert to JSON object
+
+    res.render('index',{weatherJS:dataJS, weatherAPI:dataAPI})
+        });
     });
 }); 
 
