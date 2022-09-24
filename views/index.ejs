@@ -9,7 +9,7 @@
     <h1><%= header; %></h1>
     <p><%=  (Object.getOwnPropertyNames(weatherAPI)); %></p> <%/*gets property names*/%>
     <p><%=  (Object.getOwnPropertyNames(weatherJS)); %></p>
-    <p><%=  weatherAPI; %></p>
+    <p><%=  weatherAPI.coord; %></p>
     <p><%=  (weatherJS['0'].location.name); %></p>
     <p><%=  (weatherJS['0'].current.temperature); %></p>
     <p><%=  (weatherJS['0'].forecast['0'].day); %></p>
