@@ -7,7 +7,7 @@
     <%/*studentData is shown on server side only, and not in browser */%>
 
     <h1><%= header; %></h1>
-    <p><%=  (weatherAPI); %></p> 
+    <p><%=  (weatherAPI['list'][0].dt_txt); %></p> <%/*not finished*/%>
     <p><%=  (Object.getOwnPropertyNames(weatherAPI)); %></p> <%/*gets property names*/%>
     <p><%=  (Object.getOwnPropertyNames(weatherJS)); %></p>
     <p><%/* = (weatherAPI.weather['0'].description); */%></p>
