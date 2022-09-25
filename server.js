@@ -9,7 +9,8 @@ const app = express();
 const path = require('path'); 
 var weather = require('weather-js')
 app.set('views',path.join(__dirname,'/views'));
-app.set('view engine','ejs'); 
+app.set('view engine','ejs');
+app.use(express.static('public')); 
 var fetchUrl = require("fetch").fetchUrl;
 
 app.listen(8080); //8080 is the port number 
@@ -21,6 +22,7 @@ app.use((req,res,next) => {
     console.log(`Method: ${req.method}`);
     next();
 }); 
+
 /*weather.find({search: 'Davao City', degreeType: 'C'}, function(err, result) {
     if(err) console.log(err);
     var data = JSON.stringify(result);
