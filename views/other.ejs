@@ -15,6 +15,7 @@
     <% weatherAPI['list'].forEach(item => { %>
       <p> 
       <%= item.dt_txt; %>
+      <%= item.weather.icon; %>
       </p>
       <% }) %> 
     <p><%=  (Object.getOwnPropertyNames(weatherAPI)); %></p> <%/*gets property names*/%>
