@@ -1,13 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+        <title>Home Page</title>
+        <!-- Favicon-->
+        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+        <!-- Bootstrap icons-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
+        <!-- Google fonts-->
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
+        <!-- Core theme CSS (includes Bootstrap)-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" rel="stylesheet" />
+        <link rel="stylesheet" href="/css/styles.css" />
+        <link rel="stylesheet" href="/css/main.css"> 
+    </head>
+    <body>
+        <!-- Navigation-->
+        <nav class="class= navbar navbar-dark bg-dark">
+            <div class="container">
+                <a class="navbar-brand" href="#" py-0>
+                  <img src="\assets\img\rain-weather-svgrepo-com.svg" class="d-inline-block align-top" width="30" style="height: 2.5rem"  alt=" "/>
+                  Weather Lungzx
+                </a>
+                <a class="btn btn-primary" href="#home">Home</a>
+            </div>
+        </nav>
+        <section class="current-weather text-center bg-light">
+          <div class="container">
+              <h2 class="mt-0.5">Weather Today</h2>
+              <div class="current-weather-item mx-auto mb-5 mb-lg-0">
+                <img class="img-fluid" src= <%= "http://openweathermap.org/img/w/"+(weatherAPI['list'][0].weather[0].icon)+ ".png"; %>  width="30" style="height: 2.5rem"  alt="Responsive image" />
+                <h5>Margaret E.</h5>
+                        <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
+                    </div>
+              </div>
+          </div>
 
 
-  <body>
-    <% let header = "Welcome to the Page"; %>
-    <%/*studentData is shown on server side only, and not in browser */%>
-
-    <h1><%= header; %></h1>
     <p><%=  (weatherAPI['list'][0].dt_txt); %><%/*not finished*/%>
+    <p><%=  (weatherAPI['list'][0].weather[0].icon); %><%/*not finished*/%>
     <% weatherAPI['list'].forEach(item => { %>
       <p> 
       <%= item.dt_txt; %>
@@ -17,12 +51,13 @@
     <p><%=  (Object.getOwnPropertyNames(weatherJS)); %></p>
     <p><%/* = (weatherAPI.weather['0'].description); */%></p>
     <p><%=  (weatherJS['0'].location.name); %></p>
+    <p><%=  (weatherJS['0'].location.imagerelativeurl); %></p>
     <p><%=  (weatherJS['0'].current.temperature); %></p>
     <p><%=  (weatherJS['0'].forecast['0'].day); %></p>
 
 
-    
-  <script src="server.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="server.js"></script>
  
   </body>
 </html>
