@@ -23,13 +23,13 @@ app.use((req,res,next) => {
     next();
 }); 
 
-/*weather.find({search: 'Davao City', degreeType: 'C'}, function(err, result) {
+weather.find({search: 'Davao City', degreeType: 'C'}, function(err, result) {
     if(err) console.log(err);
     var data = JSON.stringify(result);
     console.log(Object.getOwnPropertyNames(data))
     console.log(data)
 
-}); */
+}); 
 
 fetchUrl("https://api.openweathermap.org/data/2.5/forecast?q=Davao&units=metric&appid=4a13c29e47abc7587b529fde28e8d6ba",function(error,meta,body){
         var result = body.toString();
