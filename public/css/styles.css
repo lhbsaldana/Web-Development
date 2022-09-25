@@ -1389,7 +1389,7 @@ progress {
 
   .col-lg-6 {
     flex: 0 0 auto;
-    width: 50%;
+    width: 500%;
   }
 
   .col-lg-7 {
@@ -7261,7 +7261,7 @@ textarea.form-control-lg {
 
 .mx-auto {
   margin-right: auto !important;
-  margin-left: auto !important;
+  margin-left: 1 !important;
 }
 
 .my-0 {

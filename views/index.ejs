@@ -30,15 +30,18 @@
         </nav>
         <section class="current-weather text-center bg-light">
           <div class="container">
-              <h2 class="mt-0.5">Weather Today</h2>
-              <div class="current-weather-item mx-auto mb-5 mb-lg-0">
-                <img class="img-fluid" src= <%= "http://openweathermap.org/img/w/"+(weatherAPI['list'][0].weather[0].icon)+ ".png"; %>  width="30" style="height: 2.5rem"  alt="Responsive image" />
-                <h5><%=(weatherAPI['city'].name);%>, <%=(weatherAPI['city'].country);%></h5>
-                  <h7><%=(weatherAPI['city'].coord['lat']);%> °N, <%=(weatherAPI['city'].coord['lon']);%>°E</h7>
-                        <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
-                    </div>
+            <div class ="row">
+                <h2 class="mt-0.5">Weather Today</h2>
+                  <div class="current-weather-item">
+                    <div class="col-xs-12 col-md-6">
+                      <div class="col-xs-6 col-md-5">
+                        <img src= <%= "http://openweathermap.org/img/w/"+(weatherAPI['list'][0].weather[0].icon)+ ".png"; %>  width="800px" style="height: 9.5rem"  alt="Responsive image" />
+                        <h7>temperature: <%=(weatherAPI['list'][0].main.temp);%> </h7>
+                        <h5><%=(weatherAPI['city'].name);%>, <%=(weatherAPI['city'].country);%></h5>
+                        <h7><%=(weatherAPI['city'].coord['lat']);%> °N, <%=(weatherAPI['city'].coord['lon']);%>°E</h7>
+                  </div>
               </div>
-          </div>
+            </div>
 
 
     <p><%=  (weatherAPI['list'][0].dt_txt); %><%/*not finished*/%>
@@ -55,7 +58,7 @@
     <p><%=  (weatherJS['0'].location.imagerelativeurl); %></p>
     <p><%=  (weatherJS['0'].current.temperature); %></p>
     <p><%=  (weatherJS['0'].forecast['0'].day); %></p>
-
+  
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="server.js"></script>
