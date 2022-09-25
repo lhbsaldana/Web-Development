@@ -11346,16 +11346,24 @@ header.masthead h1, header.masthead .h1 {
 
 .current-weather{
   padding-top: 2rem;
-  padding-bottom: 10rem;
+  padding-bottom: 12rem;
 }
 .current-weather .current-weather-item {
+  padding-top: 2rem;
   max-width: 18rem;
 }
 .current-weather .current-weather-item img {
+  float:left;
   max-width: 150px;
   max-height: 150px;
   box-shadow: 0px 0px 0px 0px #adb5bd;
 }
+.current-weather .current-weather-text {
+  max-width: 100%;
+  height: 1.5rem;
+}
+
+
 
 .call-to-action {
   position: relative;
