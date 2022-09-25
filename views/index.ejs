@@ -28,17 +28,16 @@
                 <a class="btn btn-primary" href="#home">Home</a>
             </div>
         </nav>
-        <section class="testimonials text-center bg-light">
+        <section class="current-weather text-center bg-light">
           <div class="container">
-              <h2 class="mb-5">Weather Today</h2>
-              <div class="row">
-                  <div class="col-lg-4">
-                      <div class="testimonial-item mx- auto mb-5 mb-lg-0">
-                          <img class="img-fluid" src= <%= "http://openweathermap.org/img/w/"+(weatherAPI['list'][0].weather[0].icon)+ ".png"; %>  class="d-inline-block align-top" width="30" style="height: 2.5rem"  alt="Responsoive image" />
-                          <h5>Margaret E.</h5>
-                          <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
-                      </div>
-                  </div>
+              <h2 class="mt-0.5">Weather Today</h2>
+              <div class="current-weather-item mx-auto mb-5 mb-lg-0">
+                <img class="img-fluid" src= <%= "http://openweathermap.org/img/w/"+(weatherAPI['list'][0].weather[0].icon)+ ".png"; %>  class="d-inline-block align-top" width="30" style="height: 2.5rem"  alt="Responsive image" />
+                <h5>Margaret E.</h5>
+                        <p class="font-weight-light mb-0">"This is fantastic! Thanks so much guys!"</p>
+                    </div>
+              </div>
+          </div>
 
 
     <p><%=  (weatherAPI['list'][0].dt_txt); %><%/*not finished*/%>
