@@ -19,17 +19,40 @@
     </head>
     <body>
         <!-- Navigation-->
-        <nav class="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-900">
+        <nav class="class= navbar navbar-dark bg-dark">
             <div class="container">
-                <a class="navbar-brand" href="#">
-                  <img src="\assets\img\rain-weather-svgrepo-com.svg" alt="   " width="30" height="30" style="height: 2.5rem"  alt=" "/>
-                  weather
+                <a class="navbar-brand" href="#" py-0>
+                  <img src="\assets\img\rain-weather-svgrepo-com.svg" class="d-inline-block align-top" width="30" style="height: 2.5rem"  alt=" "/>
+                  Weather Lungzx
                 </a>
                 <a class="btn btn-primary" href="#home">Home</a>
-                
             </div>
         </nav>
-        
+        <header class="masthead">
+          <div class="container position-relative">
+              <div class="row justify-content-center">
+                  <div class="col-xl-6">
+                      <div class="text-center text-white">
+                          <!-- Page heading-->
+                          <h1 class="mb-5">Generate more leads with a professional landing page!</h1>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>      
+        </header>
+        <p><% let background = weatherJS['0'].location.imagerelativeurl + ".png"; %></p>
+        <p><%=  (weatherJS['0'].location.name); %></p>
+  
+        <section class="showcase">
+          <div class="container-fluid p-0">
+              <div class="row g-0">
+                  <div class="col-sm-6 order-sm-2 text-white showcase-img" style="background image: url (<%= background; %>)"></div>
+                  <div class="col-sm-6 order-sm-1 my-auto showcase-text">
+                      <h2>Fully Responsive Design</h2>
+                      <p class="lead mb-0">When you use a theme created by Start Bootstrap, you know that the theme will look great on any device, whether it's a phone, tablet, or desktop the page will behave responsively!</p>
+                  </div>
+              </div>
 
     <p><%=  (weatherAPI['list'][0].dt_txt); %><%/*not finished*/%>
     <% weatherAPI['list'].forEach(item => { %>
@@ -40,7 +63,10 @@
     <p><%=  (Object.getOwnPropertyNames(weatherAPI)); %></p> <%/*gets property names*/%>
     <p><%=  (Object.getOwnPropertyNames(weatherJS)); %></p>
     <p><%/* = (weatherAPI.weather['0'].description); */%></p>
+    <p><% let background = weatherJS['0'].location.imagerelativeurl + ".png"; %></p>
     <p><%=  (weatherJS['0'].location.name); %></p>
+    <p><%=  background; %></p>
+    <p><%=  (weatherJS['0'].location.imagerelativeurl); %></p>
     <p><%=  (weatherJS['0'].current.temperature); %></p>
     <p><%=  (weatherJS['0'].forecast['0'].day); %></p>
 
