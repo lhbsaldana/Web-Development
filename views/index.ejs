@@ -29,7 +29,7 @@
             </div>
         </nav>
         <section class="current-weather text-center bg-light">
-          <div class="container-fluid p-0">
+          <div class ="container-fluid p-0">
               <h2 class="mt-0.5">Weather Today</h2>
                 <div class = "justify-content-center">
                     <div style="display:inline-block;">
@@ -39,27 +39,72 @@
                               <div style="display:inline-block;"></div>
                                 <h5><%=(weatherAPI['city'].name);%>, <%=(weatherAPI['city'].country);%></h5>
                                     <h9><%=(weatherAPI['city'].coord['lat']);%> °N, <%=(weatherAPI['city'].coord['lon']);%>°E</h9>
-                                        <h9>temperature: <%=(weatherAPI['list'][0].main.temp);%> </h9>
-                            
+                                        <h9>Date: <%=(weatherJS['0'].forecast['0'].day);%></h9>
+                                          <h9><%=(weatherJS['0'].forecast['0'].date);%> </h9> 
+                                            <h9>temperature: <%=(weatherAPI['list'][0].main.temp);%> </h9>                       
                               </div>
                           </div>
                         </div>
                     </div> 
                   </div>
+
+        <section class ="features-icons bg-light text-center ">
+          <div class="grid-container">
+            <h5 class="mt-0.2">This Week's Forecast</h5>
+              <% let logo = (weatherJS['0'].forecast); %>
+                <div class ="row"> 
+                  <div class="col -lg-4">
+                  <div style="display:inline-block;">
+                    <% for (var i=0; i < logo.length; i++){ %>
+                        <div class="card border-info mb-3" style="width: 10rem;">
+                          <div class="card-header"><%= logo[i].shortday; %> </div>
+                            <img class="card-img-top" src= <%= ("http://blob.weather.microsoft.com/static/weather4/en-us/" + logo[i].skycodeday + ".gif" ); %>  width="500px" style="height: 8rem"  alt="weather icon" />
+                              <div class="card-body">
+                                  <p class="card-text">
+                                      <%= logo[i].date; %>
+                                      <br> 
+                                      Low: <%= logo[i].low; %>
+                                      High: <%= logo[i].high; %>  
+                                  </p>
+                          </div>
+                        </div>
+                        <%}%>
+                       </div>
+                    </div>
+                  </div>
+            </section>
+
+                          
+                                          
+           
     <p><%=  (weatherAPI['list'][0].dt_txt); %><%/*not finished*/%>
     <p><%=  (weatherAPI['list'][0].weather[0].icon); %><%/*not finished*/%>
-    <% weatherAPI['list'].forEach(item => { %>
-      <p> 
-      <%= item.dt_txt; %>
-      </p>
-      <% }) %> 
+   
     <p><%=  (Object.getOwnPropertyNames(weatherAPI)); %></p> <%/*gets property names*/%>
     <p><%=  (Object.getOwnPropertyNames(weatherJS)); %></p>
     <p><%/* = (weatherAPI.weather['0'].description); */%></p>
     <p><%=  (weatherJS['0'].location.name); %></p>
     <p><%=  (weatherJS['0'].location.imagerelativeurl); %></p>
     <p><%=  (weatherJS['0'].current.temperature); %></p>
-    <p><%=  (weatherJS['0'].forecast['0'].day); %></p>
+    <p><%=  (weatherJS['0'].forecast['0'].shortday); %></p>
+    <%= (weatherJS['0'].forecast)[0].skycodeday; %>
+
+    <% let logo = (weatherJS['0'].forecast); %>
+      <% for (var i=0; i< logo.length; i++){ %>
+        <img src= <%= ("http://blob.weather.microsoft.com/static/weather4/en-us/" + logo[i].skycodeday + ".gif" ); %>
+        <%}%>
+
+        
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="server.js"></script>
+ 
+  </body>
+</html>
+
+
+                          
+                                          
+   
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="server.js"></script>
