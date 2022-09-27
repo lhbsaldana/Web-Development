@@ -3010,6 +3010,7 @@ textarea.form-control-lg {
   padding: 0.75rem 1rem;
   font-size: 1rem;
   border-radius: 0.25rem;
+  margin: 0 1px;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 @media (prefers-reduced-motion: reduce) {
@@ -3034,6 +3035,16 @@ textarea.form-control-lg {
   background-color: #0d6efd;
   border-color: #0d6efd;
 }
+.btn-nav{ 
+  display: inline-block; 
+  justify-content:space-around;
+}
+.btn1{
+  margin-right: auto;
+  display: inline-block;
+}
+
+
 .btn-primary:hover {
   color: #fff;
   background-color: #0b5ed7;
@@ -3934,7 +3945,7 @@ textarea.form-control-lg {
 
 .nav {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   padding-left: 0;
   margin-bottom: 0;
   list-style: none;
@@ -4907,7 +4918,8 @@ textarea.form-control-lg {
   display: none;
 }
 
-.btn .badge {
+
+ .badge {
   position: relative;
   top: -1px;
 }
@@ -11302,6 +11314,7 @@ textarea.form-control-lg {
 }
 .features-icons .features-icons-item {
   max-width: 20rem;
+  padding-bottom: 5rem;
 }
 
 .features-icons .features-icons-item .features-icons-icon {
@@ -11401,8 +11414,11 @@ header.masthead h1, header.masthead .h1 {
   height: 1.5rem;
   padding-left: 5px
 }
-
-
+.card-horizontal {
+  display: flex;
+  flex: 1 1 auto;
+  align-content: center;
+}
 
 .call-to-action {
   position: relative;
