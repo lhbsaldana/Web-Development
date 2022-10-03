@@ -26,42 +26,59 @@
               <div class="container">
                   <a class="navbar-brand" href="#" py-0>
                     <img src="\assets\img\rain-weather-svgrepo-com.svg" class="d-inline-block align-top" width="30" style="height: 2.5rem"  alt=" "/>
-                    Weather Lungzx
+                    Weather Today
                   </a>
                   <div class="parent d-flex">
                     <a href="/">
                     <button type="button" style="margin:8px;" class="btn btn-primary btn-nav ">Home</button>
                     </a>
                     <a href="/other">
-                    <button type="button" style="margin:8px;" class="btn btn-primary btn-nav">Other</button>
+                    <button type="button" style="margin:8px;" class="btn btn-primary btn-nav">More</button>
                     </a>
               </div>
             </div>
           </nav>
 
       </section>
-      <section class ="features-icons bg-light text-center ">
-        <div class="grid-container">
-          <h5 class="mt-0.2">This Week's Forecast</h5>
-            <% let logo = (weatherAPI['list']); %>
-              <div class ="row"> 
-                <div class="col -lg-4">
-                <div style="display:inline-block;">
-                  <% for (var j=0; j < logo.length; j++){ %>
-                      <div class="card" style="width: 10rem;">
-                        <img class="card-img-top" src= <%= ("http://openweathermap.org/img/w/" + logo[j].weather[0].icon + ".png" ); %>  width="1000px" style="height: 8rem"  alt="weather icon" />
-                          <div class="card-body">
-                            <p class="card-text">
-                                <%= logo[j].dt_txt; %>
-                            </p>
-                        </div>
-                      </div>
-                      <%}%>
-                     </div>
-                  </div>
-                </div>
-          </section>
-  </body>
+       <!-- 5 day Weather Forecast with 3 hr Interval  -->
+          <section class ="features-icons bg-light text-center ">
+            <div class="grid-container">
+              <h2 class="mt-0.2">This Week's Forecast</h2>
+              <br>
+                <% let icon=(weatherAPI['list']); %>
+                <% let todayArr=icon[0].dt_txt.split(/[, ]+/); %>       
+                <% let today = todayArr[0];%>
+                  <div class ="row"> 
+                    <div class="col -lg-4">
+                    <div style="display:inline-block;">
+                      <% for (var j=0; j < icon.length; j++){ %>
+                        <% let dayArray = (icon[j].dt_txt.split(/[, ]+/)); %>  
+                          <% let dDay = dayArray[0]; %>  
+                              <% let timeString= (dayArray[1]);%>
+                              <% let dTime = new Date('1970-01-01T' + timeString + 'Z')
+                                                 .toLocaleTimeString('en-US',{timeZone:'UTC',hour12:true,hour:'numeric',minute:'numeric'});%>
+                                <% if (dDay != today) {; %>
+                                    <div class="card" style="width: 10rem;">
+                                      <img class="card-img-top" src= <%= ("http://openweathermap.org/img/w/" + icon[j].weather[0].icon + ".png" ); %>  width="1000px" style="height: 8rem"  alt="weather icon" />
+                                        <div class="card-body">
+                                          <p class="card-text">
+                                            <%= dDay; %>
+                                            <br>
+                                            <%= dTime; %>
+                                            <br>
+                                            Temp: <%= (Math.floor(icon[j].main['temp']));%>°C
+                                            <br>
+                                            <%= (icon[j].weather[0].description);%>
+                                                  </p>
+                                    </div>
+                                  </div>
+                                  <%}%>
+                                  <%}%>
+                                </div>
+                              </div>
+                            </div>
+                      </section>
+                      <br>
+
+        </body>
 </html>
-
-
