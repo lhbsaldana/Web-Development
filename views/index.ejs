@@ -6,13 +6,9 @@
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>Home Page</title>
-        <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" type="text/css" />
-        <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css" />
-        <!-- Core theme CSS (includes Bootstrap)-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" rel="stylesheet" />
         <link rel="stylesheet" href="/css/styles.css" />
         <link rel="stylesheet" href="/css/main.css"> 
@@ -23,19 +19,20 @@
             <div class="container">
                 <a class="navbar-brand" href="#" py-0>
                   <img src="\assets\img\rain-weather-svgrepo-com.svg" class="d-inline-block align-top" width="30" style="height: 2.5rem"  alt=" "/>
-                  Weather Lungzx
+                  Weather Today
                 <br>
                 </a>
-                <div class="parent d-flex">
-                  <a href="/">
-                  <button type="button" style="margin:8px;" class="btn btn-primary btn-nav ">Home</button>
-                  </a>
-                  <a href="/other">
-                  <button type="button" style="margin:8px;" class="btn btn-primary btn-nav">Other</button>
-                  </a>
+                  <div class="parent d-flex">
+                    <a href="/">
+                    <button type="button" style="margin:8px;" class="btn btn-primary btn-nav ">Home</button>
+                    </a>
+                    <a href="/other">
+                    <button type="button" style="margin:8px;" class="btn btn-primary btn-nav">More</button>
+                    </a>
             </div>
           </div>
         </nav>
+         <!-- Weather Today-->
         <section class="current-weather text-center bg-light">
           <div class ="container-fluid p-0">
               <h2 class="mt-0.5">Weather Today</h2>
@@ -53,51 +50,58 @@
                         </div>
                     </div> 
                   </div>
-        <div class="card" style="margin-bottom:50px;">
-          <div class="card-horizontal">
+        <div class="card border-info mb-3" style="margin-bottom:50px;">
+          <div class="card-horizontal ">
               <div class="img-square-wrapper">
                   <img class="" src= <%= weatherJS['0'].current["imageUrl"]; %> width="100px" style="height: 100px"  alt="Card image cap">
               </div>
                 <div class="card-body">
                     <h5 class="card-text"><%=weatherJS['0'].current["skytext"]%></h5>
                     <p class="card-text">
-                      Temp: <%=weatherJS['0'].current["temperature"]%>°C  
+                      Temp: <%=(weatherJS['0'].current["temperature"]);%>°C  
                       <br>
-                      Humidity: <%=weatherJS['0'].current["humidity"]%>%
+                      Feels Like: <%=(weatherJS['0'].current["feelslike"]);%>°C 
+                      <br>
+                      Humidity: <%=(weatherJS['0'].current["humidity"]);%>%
                     </p>
               </div>
             </div>
           </div>
       </div>
-        <br>            
+        <br>  
+         <!-- Weekly Weather Forecast -->          
         <section class ="features-icons bg-light text-center ">
           <div class="grid-container">
             <h5 class="mt-0.2">This Week's Forecast</h5>
+            <br>
               <% let logo = (weatherJS['0'].forecast); %>
                 <div class ="row"> 
                   <div class="col -lg-4">
                   <div style="display:inline-block;">
                     <% for (var i=1; i < logo.length; i++){ %>
-                        <div class="card border-info mb-3" style="width: 10rem;">
+                        <div class="card border-info mb-3" style="width: 10rem">
                           <div class="card-header"><%= (logo[i].shortday); %> </div>
                             <img class="card-img-top" src= <%= ("http://blob.weather.microsoft.com/static/weather4/en-us/" + logo[i].skycodeday + ".gif"); %>  width="500px" style="height: 8rem"  alt="weather icon" />
-                              <div class="card-body">
-                                  <p class="card-text">
-                                      <%= logo[i].skytextday; %>
-                                      <br> 
-                                      Low: <%= logo[i].low;%>°C
-                                      <br>
-                                      High: <%= logo[i].high; %>°C  
-                                  </p>
+                              <div class = "card-title">
+                                <h7><%= logo[i].date; %></h7>
+                              </div>
+                                <div class="card-body">
+                                    <p class="card-text">
+                                        <%= logo[i].skytextday; %>
+                                        <br> 
+                                        Low: <%= logo[i].low;%>°C
+                                        <br>
+                                        High: <%= logo[i].high; %>°C  
+                                    </p>
                           </div>
                         </div>
                         <%}%>
                        </div>
                     </div>
                   </div>
-            </section>
-              
-                                          
+            </section>         
+   
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
