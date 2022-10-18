@@ -1,0 +1,27 @@
+{
+  "name": "organic-vegetables",
+  "version": "1.0.0",
+  "description": "A simple website for an organic vegetable store",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lhbsaldana/itelective3-web.git"
+  },
+  "keywords": [
+    "express",
+    "js",
+    "ejs",
+    "heroku",
+    "firebase"
+  ],
+  "author": "Lannah Saldana",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lhbsaldana/itelective3-web/issues"
+  },
+  "homepage": "https://github.com/lhbsaldana/itelective3-web#readme"
+}
