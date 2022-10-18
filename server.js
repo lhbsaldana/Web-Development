@@ -13,7 +13,8 @@ app.set('view engine','ejs');
 app.use(express.static('public')); 
 var fetchUrl = require("fetch").fetchUrl;
 
-app.listen(8080); //8080 is the port number 
+const port = process.env.PORT || 8080; 
+app.listen(port);//8080 is the port number 
 
 app.use((req,res,next) => {
     console.log("Request Mode"); 
