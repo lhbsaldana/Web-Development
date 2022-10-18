@@ -2,9 +2,9 @@
   "name": "organic-vegetables",
   "version": "1.0.0",
   "description": "A simple website for an organic vegetable store",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -27,6 +27,7 @@
   "dependencies": {
     "ejs": "^3.1.8",
     "express": "^4.18.2",
-    "firebase-admin": "^11.2.0"
+    "firebase-admin": "^11.2.0",
+    "weatherjs": "^0.0.7"
   }
 }
