@@ -23,5 +23,10 @@
   "bugs": {
     "url": "https://github.com/lhbsaldana/itelective3-web/issues"
   },
-  "homepage": "https://github.com/lhbsaldana/itelective3-web#readme"
+  "homepage": "https://github.com/lhbsaldana/itelective3-web#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "firebase-admin": "^11.2.0"
+  }
 }
