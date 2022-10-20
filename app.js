@@ -9,7 +9,7 @@ const path = require('path');
 app.set('pages',path.join(__dirname,'/pages'));
 app.use(express.static('templates'));
 
-const port = process.env.PORT || 2020; 
+const port = process.env.PORT || 8000; 
 app.listen(port,); 
 
 
