@@ -59,9 +59,23 @@ app.get('/item/:itemid', async function (req, res) {
         console.log('Document data:', doc.data());
     }
     // const items = await ingColl.get();
-    let data = {
+    let item_data = {
         url: req.url,
         itemData: doc.data(),
     }
-    res.render('item', data);
+    // for sub-collection 
+    const procurement = db.collection('items').doc('procurement');
+    const history = await procurement.listCollections();
+    history.forEach(history => {
+        history.get()
+    console.log('Found subcollection with id:', history.doc.id);
+    let procure_hist = {
+        url: req.url,
+        procureData: history.docs,
+    }
+
+
+});
+
+    res.render('item', {item : item_data, procure: procure_hist});
 });
