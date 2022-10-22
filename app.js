@@ -4,12 +4,11 @@ const express = require('express');
 var app = express(); 
 const path = require('path'); 
 
-app.set('pages',path.join(__dirname, "pages"));
-app.set("view engine", "ejs");
+// app.set('pages',path.join(__dirname, '/pages'));
+app.set('views', __dirname + '/pages');
+app.set('view engine', 'ejs');
 app.use(express.static('templates'));
 
-const port =process.env.PORT || 5500; 
-app.listen(port,); 
 
 
 app.use((req,res,next) => {
@@ -21,5 +20,8 @@ app.use((req,res,next) => {
 }); 
 
 app.get('/',function(req,res){
-    res.render('index');
+    res.render('index.ejs');
 }); 
+
+const port = process.env.PORT || 5500; 
+app.listen(port);
