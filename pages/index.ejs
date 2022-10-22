@@ -72,22 +72,22 @@
                 <div class="row mb-3 gx-4 gx-md-5 row-cols-3 row-cols-md-3 row-cols-md-3 justify-content-center">
                     <% for(var index=0; index < itemData.length; index++){ %>
                     <div class="col mb-5">
-                        <div class="card h-100">
+                        <div class="card " style="width: 18rem;">
                             <a href="/item/<%= itemData[index].id %>">
                                 <!-- Product image-->
-                                <div class="icon-box"></div>
-                                    <img src="<%= itemData[index].data()['photoUrl'] %>">
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h4 class="card-title  center-align">
-                                        <%= itemData[index].data()['name'] %></h4>
-                                    <!-- Product price-->
-                                    <p class="card-text center-align">
-                                        ₱ <%=
-                                            parseFloat(itemData[index].data()['price']).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') %>
-                                    </p>
+                                <div lass="card-img-top"></div>
+                                    <img src="<%= itemData[index].data()['photoUrl'][0] %>" width="250px" height="200px" >
+
+                                    <div class="card-body p-4">
+                                        <div class="text-center">
+                                            <!-- Product name-->
+                                            <h5 class="fw-bolder"><%= itemData[index].data()['name'] %></h5>
+                                                 <!-- Product description and price-->
+                                                <p class="card-text center-align">
+                                                ₱ <%= parseFloat(itemData[index].data()['price']).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') %>
+                                                <br>
+                                                <%= itemData[index].data()['description'] %> 
+                                                </p>
                                 </div>
                             </div>
                             <!-- Product actions-->
