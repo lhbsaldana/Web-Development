@@ -5,7 +5,7 @@ var app = express();
 const path = require('path'); 
 
 // app.set('pages',path.join(__dirname, '/pages'));
-app.set('views', __dirname + '/pages');
+app.set('views', __dirname, '/pages');
 app.set('view engine', 'ejs');
 app.use(express.static('templates'));
 
