@@ -11307,3 +11307,17 @@ section.cta:before {
   height: 100%;
   background: rgba(0, 0, 0, 0.5);
 }
+
+/* item.ejs */ 
+
+leftbox {
+  float:left; 
+  background:Red;
+  width:25%;
+  height:280px;
+}
+middlebox{
+  float:left; 
+  background:Green;
+  width:50%;
+  height:280px;}

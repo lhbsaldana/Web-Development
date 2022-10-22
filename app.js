@@ -63,17 +63,34 @@ app.get('/item/:itemid', async function (req, res) {
         url: req.url,
         itemData: doc.data(),
     }
-    // for sub-collection 
-    const procurement = db.collection('items').doc('procurement');
-    const history = await procurement.listCollections();
-    history.forEach(history => {
-        history.get()
-    console.log('Found subcollection with id:', history.doc.id);
-    let procure_hist = {
-        url: req.url,
-        procureData: history.docs,
-    }
+    // for sub-collection
+    itemData.forEach(element)
+    {
+        var procurement = db.collection('items').doc(element);
+        procurement.getCollections().then(collections=> { 
+            collections.forEach(collection =>{
+                const procure = procurement.get(); 
+            if (!procure.exists){
+                console.log('No such document');
+            }else{
+                console.log('Found subcollection with id:',procure.data());
+            }
 
+            })
+        })
+        const history = await procurement.listCollections();
+        history.forEach(history => {
+            history.get()
+        console.log('Found subcollection with id:', history.doc.id);
+        let procure_hist = {
+            url: req.url,
+            procureData: history.docs,
+    }
+    
+    }
+     
+
+    }
 
 });
 
