@@ -23,19 +23,22 @@
                         <div class="col s12 m7">
                             <div class="card">
                                 <div class="card-image">
-                                    <img src="<%= itemData['photoUrl'][0] %>" width="250px" height="200px" >
+                                        <img src="<%= (product['photoUrl']);%>" width="250px" height="200px" >
                                     <h3 class="card-title">
-                                        <%= itemData['name'] %>
+                                        <%= (product.name); %>
                                     </h3>
                                 </div>
                                 <div class="card-content">
-                                    <p>₱ <%= parseFloat(itemData['price']).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,' ) %>
+                                    <p>₱ <%= (product.price); %>
                                         <br> 
-                                        <%= itemData['description'] %>
-                                        <br> 
-                                        <% for(var index=0; index < procureData.length; index++){ %>
+                                        <%= (product.description); %>
+                                    </p>
+                                    <p>
                                         <ol> 
-                                            <li>procureData[index]</li
+                                        <% for (var index=0; index < hist_array.length; index++){ %> 
+                                            <li> <%= (hist_array[index].Quantity);%> </li>
+                                        <% } %> 
+                                        </ol>
                                     </p>
                                 </div>
                                 </div>

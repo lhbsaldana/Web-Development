@@ -49,10 +49,15 @@ app.get('/', async function (req, res) {
 
 app.get('/item/:itemid', async function (req, res) {
     //fetching data from items collection
+    try{
+        console.log(req.params.itemid); 
+    }
+    catch(e){     
+    }
     const item_id = req.params.itemid;
     const item_ref = itemColl.doc(item_id);
     const product = await item_ref.get();
-    console.log('Document data:', product.data());
+    console.log('Document data:', Object.keys(product.data()));
     let productData = {
         url: req.url,
         itemData: product.data(),
@@ -65,12 +70,9 @@ app.get('/item/:itemid', async function (req, res) {
         subCol.docs.forEach(element => {
          hist_array.push(element.data()); 
     })
-    let procureHist =
-    {
-        url: req.url,
-        procureData: hist_array,
-    }
-    res.render('item', {item: productData, procure : procureHist});
+    //let hist = Object.assign({},hist_array); 
+    console.log('Procurement data:', hist_array)
+    res.render('item', {product: productData, procure : hist_array});
     });
 });
 
