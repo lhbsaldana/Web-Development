@@ -33,10 +33,11 @@ fs.initializeApp({
 });
 
 const db = fs.firestore();
-const ingColl = db.collection('items');
+const itemColl = db.collection('items');
+
 
 app.get('/', async function (req, res) {
-    const items = await ingColl.get();
+    const items = await itemColl.get();
     let data = {
         url: req.url,
         itemData: items.docs,
@@ -45,54 +46,22 @@ app.get('/', async function (req, res) {
 });
 
 app.get('/item/:itemid', async function (req, res) {
-    try {
-        console.log(req.params.itemid);
+    const items = await itemColl.get();
+    if (items.length > 0){
+        items.forEach(product =>{
+            product.collection('users').doc(product.id)
+            .collection('procurement')
+            .get()
+            .then(subCol => {
+                subCol.docs.forEach(element => {
+                    console.log(element.data()); 
+                }
+            )}
+        )}
+    )}
 
-    } catch (e) {
-    }
-    const item_id = req.params.itemid;
-    const item_ref = ingColl.doc(item_id);
-    const doc = await item_ref.get();
-    if (!doc.exists) {
-        console.log('No such document!');
-    } else {
-        console.log('Document data:', doc.data());
-    }
-    // const items = await ingColl.get();
-    let item_data = {
-        url: req.url,
-        itemData: doc.data(),
-    }
-    // for sub-collection
-    itemData.forEach(element)
-    {
-        var procurement = db.collection('items').doc(element);
-        procurement.getCollections().then(collections=> { 
-            collections.forEach(collection =>{
-                const procure = procurement.get(); 
-            if (!procure.exists){
-                console.log('No such document');
-            }else{
-                console.log('Found subcollection with id:',procure.data());
-            }
+})
+   //res.render('item', {item : item_data, procure: procure_hist});
 
-            })
-        })
-        const history = await procurement.listCollections();
-        history.forEach(history => {
-            history.get()
-        console.log('Found subcollection with id:', history.doc.id);
-        let procure_hist = {
-            url: req.url,
-            procureData: history.docs,
-    }
+
     
-    }
-     
-
-    }
-
-});
-
-    res.render('item', {item : item_data, procure: procure_hist});
-});
