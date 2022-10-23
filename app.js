@@ -65,14 +65,12 @@ app.get('/item/:itemid', async function (req, res) {
         subCol.docs.forEach(element => {
          hist_array.push(element.data()); 
     })
-    console.log(hist_array[0])
-    res.render('item', productData)
-      /*
-        let procureHist = {
+    let procureHist =
+    {
         url: req.url,
-        procureData: hist.data(), */
-    //res.render('item', {item: productData, procure : procureHist});
-    console.log(typeof(productData))
+        procureData: hist_array,
+    }
+    res.render('item', {item: productData, procure : procureHist});
     });
 });
 
