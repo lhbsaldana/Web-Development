@@ -34,11 +34,14 @@
                                         Description: <%= itemData["description"] %>
                                     </p>
                                     <p>
-                                        <ol> 
+                                        <ul> 
+                                            <% var totalQty = 0; %>
                                             <% for (var index=0; index < hist_array.length; index++){ %> 
-                                                <li> <%= (hist_array[index].Quantity);%> </li>
+                                                <li> <%= (hist_array[index].Quantity);%>, <%= hist_array[index].dateCreated.toDate();%></li>
+                                                      <% totalQty += (hist_array[index].Quantity);%>
                                             <% } %> 
-                                        </ol>
+                                        </ul>
+                                    Total Quantity: <%= totalQty%> kilos
                                     </p>
                                 </div>
                                 </div>
