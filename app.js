@@ -45,7 +45,39 @@ app.get('/', async function (req, res) {
     res.render('index', data);
 });
 
+
+
 app.get('/item/:itemid', async function (req, res) {
+    //fetching data from items collection
+    const item_id = req.params.itemid;
+    const item_ref = itemColl.doc(item_id);
+    const product = await item_ref.get();
+    console.log('Document data:', product.data());
+    let productData = {
+        url: req.url,
+        itemData: product.data(),
+    }
+
+
+    const procure_ref = itemColl.doc(item_id).collection('procurement')
+    hist_array= [] 
+    await procure_ref.get().then(subCol => {
+        subCol.docs.forEach(element => {
+         hist_array.push(element.data()); 
+    })
+    console.log(hist_array[0])
+    res.render('item', productData)
+      /*
+        let procureHist = {
+        url: req.url,
+        procureData: hist.data(), */
+    //res.render('item', {item: productData, procure : procureHist});
+    console.log(typeof(productData))
+    });
+});
+
+
+/*fetching data from procurement subcollection
     const items = await itemColl.get();
     if (items.length > 0){
         items.forEach(product =>{
@@ -61,7 +93,6 @@ app.get('/item/:itemid', async function (req, res) {
     )}
 
 })
-   //res.render('item', {item : item_data, procure: procure_hist});
+res.render('item', {item : item_data, procure: procure_hist});
+ */
 
-
-    

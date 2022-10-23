@@ -23,15 +23,15 @@
                         <div class="col s12 m7">
                             <div class="card">
                                 <div class="card-image">
-                                    <img src="<%= item['photoUrl'][0] %>" width="250px" height="200px" >
+                                    <img src="<%= itemData['photoUrl'][0] %>" width="250px" height="200px" >
                                     <h3 class="card-title">
-                                        <%= item['name'] %>
+                                        <%= itemData['name'] %>
                                     </h3>
                                 </div>
                                 <div class="card-content">
-                                    <p>₱ <%= parseFloat(item['price']).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,' ) %>
+                                    <p>₱ <%= parseFloat(itemData['price']).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,' ) %>
                                         <br> 
-                                        <%= item['description'] %>
+                                        <%= itemData['description'] %>
                                         <br> 
                                         Total Quantity: 
                                     </p>
