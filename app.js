@@ -49,32 +49,29 @@ app.get('/', async function (req, res) {
 
 app.get('/item/:itemid', async function (req, res) {
     //fetching data from items collection
-    try{
-        console.log(req.params.itemid); 
-    }
-    catch(e){     
+    try {
+        console.log(req.params.itemid);
+
+    } catch (e) {
     }
     const item_id = req.params.itemid;
     const item_ref = itemColl.doc(item_id);
-    const product = await item_ref.get();
-    console.log('Document data:', Object.keys(product.data()));
-    let productData = {
-        url: req.url,
-        itemData: product.data(),
-    }
-
-
+    const doc = await item_ref.get();
+    let itemData = doc.data();
+    console.log(itemData);
+    
     const procure_ref = itemColl.doc(item_id).collection('procurement')
     hist_array= [] 
     await procure_ref.get().then(subCol => {
         subCol.docs.forEach(element => {
          hist_array.push(element.data()); 
     })
-    //let hist = Object.assign({},hist_array); 
     console.log('Procurement data:', hist_array)
-    res.render('item', {product: productData, procure : hist_array});
+
+    res.render('item', {itemData, hist_array});
     });
 });
+
 
 
 /*fetching data from procurement subcollection

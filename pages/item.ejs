@@ -15,7 +15,6 @@
     </head>
 
          <body>
-        <%- include('../partials/navbar'); %>
         <div class="row">
             <div style="width: 100%;">
                 <div style="width: 50%; height: 100px; float: left;"> 
@@ -23,21 +22,22 @@
                         <div class="col s12 m7">
                             <div class="card">
                                 <div class="card-image">
-                                        <img src="<%= (product['photoUrl']);%>" width="250px" height="200px" >
+                                        <img src="<%= itemData['photoUrl'][0];%>" width="250px" height="200px" >
+                                        <img src="<%= itemData['photoUrl'][1];%>" width="250px" height="200px" >
                                     <h3 class="card-title">
-                                        <%= (product.name); %>
+                                        Name: <%= itemData["name"] %>
                                     </h3>
                                 </div>
                                 <div class="card-content">
-                                    <p>₱ <%= (product.price); %>
+                                    <p>Price: <%= itemData["price"] %>
                                         <br> 
-                                        <%= (product.description); %>
+                                        Description: <%= itemData["description"] %>
                                     </p>
                                     <p>
                                         <ol> 
-                                        <% for (var index=0; index < hist_array.length; index++){ %> 
-                                            <li> <%= (hist_array[index].Quantity);%> </li>
-                                        <% } %> 
+                                            <% for (var index=0; index < hist_array.length; index++){ %> 
+                                                <li> <%= (hist_array[index].dataQuantity);%> </li>
+                                            <% } %> 
                                         </ol>
                                     </p>
                                 </div>
