@@ -61,7 +61,7 @@ app.get('/item/:itemid', async function (req, res) {
     console.log(itemData);
     
     //fetching data from
-    const procure_ref = itemColl.doc(item_id).collection('procurement')
+    const procure_ref = itemColl.doc(item_id).collection('procurement');
     hist_array= [] 
     await procure_ref.get().then(subCol => {
         subCol.docs.forEach(element => {
