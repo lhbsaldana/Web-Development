@@ -69,7 +69,7 @@ app.get('/item/:itemid', async function (req, res) {
     })
     console.log('Procurement data:', hist_array)
 
-    res.render('item', {itemData, procure_ref, hist_array});
+    res.render('item', {itemData, db, hist_array});
     });
 });
 
