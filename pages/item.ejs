@@ -42,13 +42,40 @@
                                             <% } %> 
                                         </ul>
                                     Total Quantity: <%= totalQty%> kilos
+                                    <p>
+                                    <label>Add Procurement Count: </label><input id="AddBox" type="number"></input>
                                     </p>
+                                    <hr> 
+                                    <button id = "AddBtn" onclick ='addRow()' > Add </button>    
+                            <script> 
+                                    const AddBox = document.querySelector("#AddBox");
+                                    const AddBtn = document.querySelector("#AddBtn");
+                                    AddBtn.addEventListener("click", function(addRow){
+                                        const qty = AddBox.value
+                                        const date = FieldValue.Timestamp.now()
+                                        procure_ref.get().then(function (procure_ref){
+                                            procure_ref.add({
+                                            Quantity: qty, 
+                                            dateCreated: date})
+                                        })
+                                        .then(()=>{
+                                            alert("data added succesfully");
+                                        })
+                                        .catch(function(error) {
+                                            console.error("Error adding document");
+                                        });
+                                    });
+                                      
+
+
+                            </script> 
                                 </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div style="margin-left: 50%; height: 100px; background: blue;"> 
                     Right Div
                 </div>

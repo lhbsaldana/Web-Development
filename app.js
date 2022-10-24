@@ -60,6 +60,7 @@ app.get('/item/:itemid', async function (req, res) {
     let itemData = doc.data();
     console.log(itemData);
     
+    //fetching data from
     const procure_ref = itemColl.doc(item_id).collection('procurement')
     hist_array= [] 
     await procure_ref.get().then(subCol => {
@@ -68,7 +69,7 @@ app.get('/item/:itemid', async function (req, res) {
     })
     console.log('Procurement data:', hist_array)
 
-    res.render('item', {itemData, hist_array});
+    res.render('item', {itemData, procure_ref, hist_array});
     });
 });
 
