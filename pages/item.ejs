@@ -42,17 +42,19 @@
                                             <% } %> 
                                         </ul>
                                     Total Quantity: <%= totalQty%> kilos
-                                    <p>
-                                    <label>Add Procurement Count: </label><input id="AddBox" type="number"></input>
-                                    </p>
-                                    <hr> 
-                                    <button id = "AddBtn" onclick ="addRow();" > Add </button>    
+                                    <form>
+                                        <label>Enter Procurement Count: </label>
+                                        <input type ="number" id="AddBox"></input>
+                                        <input type = 'button' onclick ="addRow()" value = "Add data">    
+                                        <button id = "AddBtn"> Add </button>
+                                </form> 
                             <script type = "text/javascript"> 
-                                    //let AddBox = document.getElementById("AddBox");
-                                    // /let AddBtn = document.getElementById("AddBtn");
-                                    function addRow(){
-                                        procure_ref.add({
-                                                Quantity: document.getElementById("AddBox").value, 
+                                    let AddBox = document.getElementById("AddBox");
+                                    let AddBtn = document.getElementById("AddBtn");
+
+                                    async function addRow(){
+                                        db.collection('items').add({
+                                                Quantity: AddBox.value, 
                                                 dateCreated: new Date()})
                                             .then(()=>{
                                                 alert("data added succesfully");
