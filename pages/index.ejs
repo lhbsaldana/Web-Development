@@ -23,15 +23,7 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
-                        </li>
+                        <li class="nav-item"><a class="nav-link" href="#!">All Products</a></li>
                     </ul>
                     <form class="d-flex">
                         <button class="btn btn-outline-dark" type="submit">
@@ -43,15 +35,16 @@
                 </div>
             </div>
         </nav>
+    <div style="background-color: khaki;"> 
         <section class="cta">
             <div class="cta-content">
-                <div class="container px-3">
+                <div class="container px-lg-5">
                     <h2 class="text-white display-1 lh-1 mb-4">
                         Eat healthy.
                         <br />
                         Live long.
                     </h2>
-                    <p class="btn btn-outline-light py-3 px-4 rounded-pill" href="https://startbootstrap.com/theme/new-age" target="_blank">Shop Now</p>
+                    <p class=" btn btn-outline-light py-3 px-4 rounded-pill" href="https://startbootstrap.com/theme/new-age" target="_blank">Shop Now</p>
                 </div>
             </div>
         </section>
@@ -68,16 +61,15 @@
         --> 
         <!-- Section-->
         <section class="py-5">
-            <div class="container px-4 px-lg-5 mt-5">
+            <div class="container px-4 px-lg-5 mt-5" >
                 <div class="row mb-3 gx-4 gx-md-5 row-cols-3 row-cols-md-3 row-cols-md-3 justify-content-center">
                     <% for(var index=0; index < itemData.length; index++){ %>
                     <div class="col mb-5">
                         <div class="card " style="width: 18rem;">
                             <a href="/item/<%= itemData[index].id %>">
                                 <!-- Product image-->
-                                <div lass="card-img-top"></div>
+                                <div class="card-img-top"></div>
                                     <img src="<%= itemData[index].data()['photoUrl'][0] %>" width="250px" height="200px" >
-
                                     <div class="card-body p-4">
                                         <div class="text-center">
                                             <!-- Product name-->
@@ -85,8 +77,6 @@
                                                  <!-- Product description and price-->
                                                 <p class="card-text center-align">
                                                 ₱ <%= parseFloat(itemData[index].data()['price']).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') %>
-                                                <br>
-                                                <%= itemData[index].data()['description'] %> 
                                                 </p>
                                 </div>
                             </div>
