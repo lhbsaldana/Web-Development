@@ -12,6 +12,7 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/main.css" rel="stylesheet" />
     </head>
     <body>
         <!-- Navigation-->
@@ -23,12 +24,12 @@
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
                         <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">All Products</a></li>
+                        <li class="nav-item"><a class ="btn" href="#allProducts">All Products</a></li>
                     </ul>
                     <form class="d-flex">
                         <button class="btn btn-outline-dark" type="submit">
                             <i class="bi-cart-fill me-1"></i>
-                            Cart
+                            Profile
                             <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>
                     </form>
@@ -44,7 +45,8 @@
                         <br />
                         Live long.
                     </h2>
-                    <p class=" btn btn-outline-light py-3 px-4 rounded-pill" href="https://startbootstrap.com/theme/new-age" target="_blank">Shop Now</p>
+                   
+                    <a class=" btn btn-outline-light py-3 px-4 rounded-pill" href="#allProducts">Shop Now</a>
                 </div>
             </div>
         </section>
@@ -60,7 +62,7 @@
         </header> 
         --> 
         <!-- Section-->
-        <section class="py-5">
+        <section class="py-5" id="allProducts" >
             <div class="container px-4 px-lg-5 mt-5" >
                 <div class="row mb-3 gx-4 gx-md-5 row-cols-3 row-cols-md-3 row-cols-md-3 justify-content-center">
                     <% for(var index=0; index < itemData.length; index++){ %>
@@ -82,7 +84,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="/item/<%= itemData[index].id %>">View details</a></div>
                             </div>
                         </div>
                     </div>
@@ -90,8 +92,8 @@
         </section>
 
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+        <footer class="py-5 bg-light">
+            <div class="container"><p class="m-0 text-center text-black">&copy; Organic Grocer 2022</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
