@@ -56,50 +56,13 @@
                                                         <br> 
                                                         Description: <%= itemData["description"] %>
                                                     </p>
-                                                    <% var theader,tbody,tb,tfooter; %> 
-                                                        theader ="<thead>";
-                                                            theader+="<tr>";
-                                                            theader+='<th style="text-align:left" >Date /Time</th>';
-                                                            theader+="<th>Quantity</th>";
-                                                            theader+='<th style="text-align:right">Quantity</th>';
-                                                            theader+="</tr>";
-                                                            theader+="</thead>";
-                                                        <ul> 
-                                                            <% var totalQty = 0; %>
-                                                            <% for (var index=0, tbody='';  index < hist_array.length; index++){ %> 
-                                                                tbody += "<tr>"
-                                                                    +'<td style="text-align:right">'+<%= (hist_array[index].Quantity);%>+'</td>'
-                                                                    +'<td style="text-align:right">'+<%= hist_array[index].dateCreated.toDate();%>+'</td>'               
-                                                                    +"</tr>";
-                                                                tbody += "</tbody>"
-                                                            <p>Price:  <% totalQty += (hist_array[index].Quantity);%></p>      
-                                                            <% } %> 
-                                                        </ul>
-                                                    Total Quantity: <%= totalQty%> kilos
+                                                  
                                                     <form>
                                                         <label>Enter Procurement Count: </label>
-                                                        <input type ="number" id="AddBox"></input>
-                                                        <input type = 'button' onclick ="addRow()" value = "Add data">    
-                                                        <button id = "AddBtn"> Add </button>
+                                                        <input type ="number" id="AddBox" oninput="sumQty()"></input>
+                                                        <input type = 'button' onclick ="addRow()" value = "Add data">  
+                                                        <button onclick="myDeleteFunction()">Delete row</button>  
                                                 </form> 
-                                                <script type = "text/javascript"> 
-                                                    let AddBox = document.getElementById("AddBox");
-                                                    let AddBtn = document.getElementById("AddBtn");
-                                                    async function addRow(){
-                                                        db.collection('items').add({
-                                                                Quantity: AddBox.value, 
-                                                                dateCreated: new Date()})
-                                                            .then(()=>{
-                                                                alert("data added succesfully");
-                                                            })
-                                                            .catch(function(error) {
-                                                                console.log("Error adding document");
-                                                            }) 
-                                                    .catch (function (error) {
-                                                    console.log("Error getting document: ", error);
-                                                    });
-                                                }; 
-                                            </script>
                                         
                                                 </div>
                                                 </div>
@@ -108,26 +71,65 @@
                                     </div>
                                 </div>
 
-                                <div style="margin-left: 50%; height: 100px; "> 
-                                    <div class="table-responsive-md">
-                                        <table class="table">
-                                        <thead>
-                                            <tr>
-                                            <th style="text-align:left">Date/Time</th>
-                                            <th style="text-align:right">Quantity</th>
-                                            </tr>
-                                        </thead>
-                                        <ul> 
-                                            <% var totalQty = 0; %>
-                                            <% for (var index=0;  index < hist_array.length; index++){ %> 
+                                <div style="margin-left: 50%; height: 100px;"> 
+                                    <div class="container">
+                                    <div class="table-responsive-md"></div>
+                                        <table class="table table-bordered" border="5" cellspacing="2" cellpadding="1" id ="myTable" >
+                                            <thead>
                                                 <tr>
-                                                    <td style="text-align:right"><%= (hist_array[index].Quantity);%></td>
-                                                    <td style="text-align:right"><%= hist_array[index].dateCreated.toDate();%></td>              
+                                                <th style="text-align:left">Date/Time</th>
+                                                <th style="text-align:right">Quantity</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% var totalQty = 0; %>
+                                                <% for (var index=0;  index < hist_array.length; index++){ %> 
+                                                    <tr>
+                                                        <td style="text-align:right"><%= hist_array[index].dateCreated.toDate();%></td>
+                                                        <td style="text-align:right"><%= (hist_array[index].Quantity);%></td>              
                                                     </tr>
-                                                </tbody>  
-                                                <% totalQty += (hist_array[index].Quantity);%>
+                                            </tbody>  
+                                                <p><% totalQty += (hist_array[index].Quantity);%> </p>
                                             <% } %> 
-                                    <p>Total Quantity: <%= totalQty%> kilos </p> 
+                                        </table>
+                                    <p id="totalQty">Total Quantity: <%= totalQty%> kilos </p> 
+                                    <script>
+                                        function addRow() {
+                                            var table =  document.getElementById("myTable");
+                                            var qty = document.getElementById("AddBox").value*1;
+                                            var totalQty =document.getElementById("totalQty"); 
+                                            var sum = 0;
+                                            var row = table.insertRow(-1);
+                                            var cell1 = row.insertCell(0);
+                                            var cell2 = row.insertCell(1);
+                                            cell2.innerHTML = qty;
+                                            cell1.innerHTML = new Date();
+                                            for(var i = 1; i < table.rows.length; i++)
+                                                {
+                                                    sum = sum + parseInt(table.rows[i].cells[1].innerHTML); 
+                                                }
+                                                
+                                            document.getElementById("totalQty").innerHTML="Total Quantity:" + sum;
+
+                                        }
+                                        function myDeleteFunction() {
+                                        document.getElementById("myTable").deleteRow(-1);
+                                        }
+
+                                        function sumQty(){
+                                            var table =  document.getElementById("myTable");
+                                            var qty = document.getElementById("AddBox").value*1;
+                                            var totalQty =document.getElementById("totalQty").value*1; 
+                                            for(var i = 1; i < table.rows.length; i++)
+                                                {
+                                                    sum = sum + parseInt(table.rows[i].cells[1].innerHTML); 
+                                                }
+                                                document.getElementById("myTable").innerHTML= sum;
+                                        //console.log(sumVal);
+                                            //totalQty = sum;
+                                        }
+
+                                    </script> 
                                 </div>
                             </div>
                             
