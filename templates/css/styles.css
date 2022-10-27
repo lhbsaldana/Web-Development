@@ -11454,6 +11454,7 @@ section.cta:before {
   height:280px;
   border-collapse: collapse;
   position:relative;
+  padding-right:70px;
 }
 .rightpane{
   float:right; 
@@ -11462,11 +11463,13 @@ section.cta:before {
   height:280px;
   border-collapse: collapse;
   position:relative; 
+  margin-top: -70;
 }
 .toppane {
   height: 10%;
   border-bottom: 3px;
   border-collapse: collapse;
+  
 }
 
 /* for teh carousel image*/
