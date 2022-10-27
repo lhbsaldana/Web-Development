@@ -11,24 +11,159 @@
         <!-- Bootstrap icons-->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
-        <link href="css/main.css" rel="stylesheet" />
+        <link href="css/itemstyle.css" rel="stylesheet" />
+    
     </head>
 
         <!-- Section-->
-        <body>
-                <div class = 'leftpane'> 
-                    <%- include('../partials/navbar'); %>
-                    <div style="width: 50%; float: left;"> 
-                    <div class="card">
-                        <div class="card-image">
-                                            <img src="<%= itemData['photoUrl'][0];%>" width="250px" height="200px" >
-                                            <img src="<%= itemData['photoUrl'][1];%>" width="250px" height="200px" >
+        <body style="background-color:#b7e4c7";>
+            <div class = "leftpane"> 
+                <div style="width: 50%; float: left;">
+                    <div class="container">
+            <style>
+            :root {
+                --orange: #fd9940;
+                --darkorange: #dd7d25;
+                --platinum: #e5e5e5;
+                --black: #2b2d42;
+                --white: #fff;
+                --thumb: #edf2f4;
+              }
+              
+              * {
+                box-sizing: border-box;
+                padding: 0;
+                margin: 0;
+              }
+              
+              body {
+                font: 16px / 24px "Rubik", sans-serif;
+                color: var(--black);
+                background: var(--platinum);
+                margin: 50px 0;
+              }
+              
+              .container {
+                max-width: 1400px;
+                padding: 0 15px;
+                margin: 0 auto;
+              }
+              
+              h2 {
+                font-size: 32px;
+                margin-bottom: 1em;
+              }
+              
+              .cards {
+                display: grid;
+                grid-auto-columns: 50%;
+                grid-column-gap: 10px;
+                grid-auto-flow: column;
+                padding: 15px 0px;
+                list-style: none;
+                width: 60rem;
+              }
+              
+              .card {
+                display: inline-block;
+                flex-direction: column;
+                padding: 30px;
+                background: var(--white);
+                border-radius: 12px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+                scroll-snap-align: start;
+                transition: all 0.2s;
+              }
+              
+              .card:hover {
+                color: var(--white);
+                background: var(--orange);
+              }
+              
+              .card .card-title {
+                font-size: 20px;
+              }
+              
+              .card .card-content {
+                margin: 20px 0;
+                max-width: 70rem ;
+              }
+              
+              .card .card-link-wrapper {
+                margin-top: auto;
+              }
+              
+              .card .card-link {
+                display: inline-block;
+                text-decoration: none;
+                color: white;
+                background: var(--orange);
+                padding: 6px 12px;
+                border-radius: 8px;
+                transition: background 0.2s;
+              }
+              
+              .card:hover .card-link {
+                background: var(--darkorange);
+              }
+              
+              .cards::-webkit-scrollbar {
+                height: 12px;
+              }
+              
+              .cards::-webkit-scrollbar-thumb,
+              .cards::-webkit-scrollbar-track {
+                border-radius: 92px;
+              }
+              
+              .cards::-webkit-scrollbar-thumb {
+                background: var(--darkorange);
+              }
+              
+              .cards::-webkit-scrollbar-track {
+                background: var(--thumb);
+              }
+              
+              @media (min-width: 700px) {
+                .cards {
+                  grid-auto-columns: calc(20% - 10px);
+                  grid-column-gap: 20px;
+                }
+              }
+              
+              @media (min-width: 700px) {
+                .cards {
+                  grid-auto-columns: calc(calc(100% / 3) - 20px);
+                  grid-column-gap: 30px;
+                }
+              }
+
+
+            </style>
+                            <h2 style="text-align:center"><%= itemData["name"] %></h2>
+                            <ul class="cards";>
+                              <li class="card">
+                                <div>
+                                  <div class="card-content">
+                                    <img class="img-fluid" src="<%= itemData['photoUrl'][0];%>" width="250px" height="200px">
+                                  </div>
+                                </div>
+                                <div class="card-link-wrapper">
+                                </div>
+                              </li>
+                              <li class="card">
+                                <div>
+                                  <div class="card-content">
+                                    <img class="img-fluid" src="<%= itemData['photoUrl'][1];%>" width="250px" height="200px">
+                                </div>
+                         
+                                    
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
                 <div class = "rightpane">                 
-                    <div style="margin-left: 50%;"> 
+                    <div style="margin-left: 50%;";> 
                             <h3 class="card-title">
                                 Name: <%= itemData["name"] %>
                                     <div class="card-content">
@@ -43,7 +178,7 @@
                                             <button onclick="myDeleteFunction()">Delete row</button>  
                                         </form> 
                                         <div class="table-responsive-md"></div>
-                                        <table class="table table-bordered" border="5" cellspacing="2" cellpadding="1" id ="myTable" >
+                                        <table class="table table-bordered" border="2" cellspacing="2" cellpadding="1" id ="myTable" >
                                             <thead>
                                                 <tr>
                                                 <th style="text-align:left">Date/Time</th>
@@ -81,15 +216,35 @@
                                                     function myDeleteFunction() {
                                                     document.getElementById("myTable").deleteRow(-1);
                                                     }
-                                                                            
+                                                    
+                                                    $('#recipeCarousel').carousel({ interval: 10000 })
+
+                                                    $('.carousel .carousel-item').each(function(){
+                                                        var minPerSlide = 3;
+                                                        var next = $(this).next();
+                                                        if (!next.length) {
+                                                        next = $(this).siblings(':first');
+                                                        }
+                                                        next.children(':first-child').clone().appendTo($(this));
+                                                        
+                                                        for (var i=0;i<minPerSlide;i++) {
+                                                            next=next.next();
+                                                            if (!next.length) {
+                                                                next = $(this).siblings(':first');
+                                                            }
+                                                            
+                                                            next.children(':first-child').clone().appendTo($(this));
+                                                        }
+                                                        });
+                         
                                         </script>
+
                                 </div>
                             </div>
                         </div>
-     
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-     
+        <script src="app.js"></script>               
     </body>
 </html>
