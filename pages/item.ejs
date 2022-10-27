@@ -63,7 +63,7 @@
                 grid-auto-flow: column;
                 padding: 15px 0px;
                 list-style: none;
-                width: 65rem;
+                width: 55rem;
               }
               
               .card {
@@ -142,14 +142,13 @@
                     </div>
                     <div style="margin-left:50px; margin-right:30px;"> 
                         <div class = "rightpane">                 
-                                    <h3 class="card-title">
+                                    <h2 class="card-title">
                                         Name: <%= itemData["name"] %> 
-                                    </h3>
+                                    </h2>
                                             <div class="card-content">
                                                 <h5>Price:  ₱ <%= parseFloat(itemData["price"]).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') %></h5>
                                                     <br> 
-                                                  <p>
-                                                    Description: <%= itemData["description"] %>
+                                                  <p>Description: <%= itemData["description"] %>
                                                 </p>
                                                 <br>
                                                 <form>
