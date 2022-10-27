@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Product Page </title>
+        <title>Shop: <%= itemData["name"] %> </title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -143,8 +143,9 @@
                     <div style="margin-left:50px; margin-right:30px;"> 
                         <div class = "rightpane">                 
                                     <h2 class="card-title">
-                                        Name: <%= itemData["name"] %> 
+                                        <%= itemData["name"] %> 
                                     </h2>
+                                    <br>
                                             <div class="card-content">
                                                 <h5>Price:  ₱ <%= parseFloat(itemData["price"]).toFixed(2).replace(/\d(?=(\d{3})+\.)/g, '$&,') %></h5>
                                                     <br> 
