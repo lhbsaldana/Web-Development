@@ -77,7 +77,7 @@
 }
 
 body {
-  font: 16px / 24px "Rubik", sans-serif;
+  font: 18px "Rubik", sans-serif;
   color: var(--black);
   background: var(--platinum);
   margin: 50px 0;
