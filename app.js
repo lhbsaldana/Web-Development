@@ -6,6 +6,7 @@ const path = require('path');
 
 // app.set('pages',path.join(__dirname, '/pages'));
 app.set('views', __dirname + '/pages');
+app.set('partials', __dirname + '/partials');
 app.set('view engine', 'ejs');
 app.use(express.static("templates"));
 app.use(express.static('partials'));

@@ -17,8 +17,11 @@
 
         <!-- Section-->
         <body style="background-color:#b7e4c7";>
+            <div class = "toppane"> 
+                <%- include('../partials/navbar'); %>
+            </div>
             <div class = "leftpane"> 
-                <div style="width: 50%; float: left;">
+                <div style="width: 50%; float:left;">
                     <div class="container">
             <style>
             :root {
@@ -72,7 +75,7 @@
                 border-radius: 12px;
                 box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
                 scroll-snap-align: start;
-                transition: all 0.2s;
+                transition: all 0.2s; 
               }
               
               .card:hover {
