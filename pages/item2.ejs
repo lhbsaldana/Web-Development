@@ -135,3 +135,108 @@
             navbar navbar-expand-lg navbar-light bg-light
             container px-4 px-lg-5
             "navbar-brand
+
+
+            :root {
+                --orange: #fd9940;
+                --darkorange: #dd7d25;
+                --platinum: #e5e5e5;
+                --black: #2b2d42;
+                --white: #fff;
+                --thumb: #edf2f4;
+              }
+              
+              * {
+                box-sizing: border-box;
+                padding: 0;
+                margin: 0;
+              }
+              
+              body {
+                font: 16px / 24px "Rubik", sans-serif;
+                color: var(--black);
+                background: var(--platinum);
+                margin: 50px 0;
+              }
+              
+              .container {
+                max-width: 1400px;
+                padding: 0 15px;
+                margin: 0 auto;
+              }
+              
+              h2 {
+                font-size: 32px;
+                margin-bottom: 1em;
+              }
+              
+              .cards {
+                display: grid;
+                grid-auto-columns: 50%;
+                grid-column-gap: 10px;
+                grid-auto-flow: column;
+                padding: 15px 0px;
+                list-style: none;
+                width: 65rem;
+              }
+              
+              .card {
+                display: grid;
+                flex-direction: column;
+                padding: 30px;
+                background: var(--white);
+                border-radius: 12px;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 15%);
+                transition: all 0.2s; 
+              }
+              
+              .card:hover {
+                color: var(--white);
+                background: var(--orange);
+              }
+              
+              .card .card-title {
+                font-size: 20px;
+              }
+              
+              .card .card-content {
+                margin: 20px 0;
+                max-width: 70rem ;
+              }
+              
+              .card .card-link-wrapper {
+                margin-top: auto;
+              }
+              
+              .card .card-link {
+                display: inline-block;
+                text-decoration: none;
+                color: white;
+                background: var(--orange);
+                padding: 6px 12px;
+                border-radius: 8px;
+                transition: background 0.2s;
+              }
+              
+              .card:hover .card-link {
+                background: var(--darkorange);
+              }
+              
+              
+              .invisible-scrollbar::-webkit-scrollbar {
+              display: none;
+            }
+              
+              @media (min-width: 700px) {
+                .cards {
+                  grid-auto-columns: calc(20% - 10px);
+                  grid-column-gap: 20px;
+                }
+              }
+              
+              @media (min-width: 700px) {
+                .cards {
+                  grid-auto-columns: calc(calc(100% / 3) - 20px);
+                  grid-column-gap: 30px;
+                }
+              }
