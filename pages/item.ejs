@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Shop: <%= itemData["name"]%> </title>
+        <title>Shop</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Bootstrap icons-->
@@ -145,7 +145,7 @@
                     <div style="margin-left:50px; margin-right:30px;"> 
                         <div class = "rightpane">                 
                                     <h2 class="card-title">
-                                        <%= itemData['name'] %> 
+                                        <%= itemData["name"] %> 
                                     </h2>
                                     <br>
                                             <div class="card-content">
@@ -154,7 +154,7 @@
                                                   <p>Description: <%= itemData["description"] %>
                                                 </p>
                                                 <br>
-                                                  <form id = "addNew" action= "/item/:itemid"  method="POST">
+                                                  <form id = "addNew" action="/item/itemid">
                                                         <label>Enter Procurement Count: </label>
                                                         <input id="Procbox" type="number" name= "qty">
                                                         <input id="Insbtn" type = 'submit' value = "Add"></input>
@@ -179,25 +179,7 @@
                                                     <% } %> 
                                                 </table>
                                                 <p id="totalQty">Total Quantity: <%= totalQty%> kilos </p> 
-                                        <script type = "module">
-                                            function addRow() {
-                                                    var table =  document.getElementById("myTable");
-                                                    var qty = document.getElementById("AddBox").value*1;
-                                                    var totalQty =document.getElementById("totalQty"); 
-                                                    var sum = 0;
-                                                    var row = table.insertRow(-1);
-                                                    var cell1 = row.insertCell(0);
-                                                    var cell2 = row.insertCell(1);
-                                                    cell2.innerHTML = qty;
-                                                    cell1.innerHTML = new Date();
-                                                        for(var i = 1; i < table.rows.length; i++)
-                                                        {
-                                                        sum = sum + parseInt(table.rows[i].cells[1].innerHTML); 
-                                                        }
-                                                    document.getElementById("totalQty").innerHTML="Total Quantity: " + sum;}
-                                                    function myDeleteFunction() {
-                                                    document.getElementById("myTable").deleteRow(-1);
-                                                    }
+                                        <script type="module">
                                             // Import the functions you need from the SDKs you need
                                             import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
                                            // Import the functions you need from the SDKs you need
@@ -225,14 +207,24 @@
                                             var fs = require("firebase-admin");
                                             const db = fs.firestore();
                                             const messageRef = db.collection('items').doc(id).collection('procurement');
-
+                                            
 
                                             //-- references --//
                                             let ProcBox = document.getElementById("Procbox");
                                             let insBtn = document.getElementById("Insbtn");
 
                                            
-                                            insBtn.addEventListener("click", AddDocument_AutoID);
+                                            // Writing data to firestore 
+                                            /*
+                                            const form = document.querySelector('#addNew'); 
+                                            form.addEventListener('submit',(e) =>{
+                                            e.preventDefault(); 
+                                            const db = fs.firestore();
+                                            const item_proc = db.collection('items').doc(item_id).collection('procurement').add({
+                                                Quantity: form.qty.value*1,
+                                                dateCreated : new Date()
+                                            })})
+                                            console.log("Succesfully added!"); */
 
                                       </script>
                                       

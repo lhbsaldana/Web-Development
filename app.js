@@ -5,7 +5,7 @@ var app = express();
 const path = require('path'); 
 app.use(express.json()); //NEEDED
 app.use(express.urlencoded()); //NEEDED
-const form = document.querySelector('#addNew'); 
+
 
 // app.set('pages',path.join(__dirname, '/pages'));
 app.set('views', __dirname + '/pages');
@@ -97,37 +97,19 @@ app.post('/item/:itemid', async function (req, res) {
     } else {
         console.log('Document data:', doc.data());
     }
-
-    console.log(req.body)
     var datainput = {
-        Quantity: Number(req.body.qty),
+        procurementTrans: Number(req.body.quantity),
         dateCreated : new Date()
     }
-
+    console.log(req.body)
     const db = fs.firestore();
     const item_proc = db.collection('items').doc(item_id).collection('procurement').add(datainput);
-
-    let data = {
-        url: req.url,
-        itemData: doc.data(),
-        id: item_id,
-        fs:fs
-    }
-
+    });
 
     res.render('item', {item_id,itemData});
-});
 
-// Writing data to firestore 
-form.addEventListener('submit',(e) =>{
-    e.preventDefault(); 
-    const db = fs.firestore();
-    const item_proc = db.collection('items').doc(item_id).collection('procurement').add({
-        Quantity: form.qty.value*1,
-        dateCreated : new Date()
-    })
-}
-)
+
+
 
 
 /*fetching data from procurement subcollection
