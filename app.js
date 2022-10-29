@@ -11,7 +11,7 @@ app.set('view engine', 'ejs');
 app.use(express.static("templates"));
 app.use(express.static('partials'));
 
-const port = process.env.PORT || 5500; 
+const port = process.env.PORT || 3000; 
 app.listen(port);
 
 app.use((req,res,next) => {
@@ -48,7 +48,7 @@ app.get('/', async function (req, res) {
 });
 
 
-
+/* GET METHOD - to fetch data from a source */
 app.get('/item/:itemid', async function (req, res) {
     //fetching data from items collection
     try {
@@ -56,13 +56,14 @@ app.get('/item/:itemid', async function (req, res) {
 
     } catch (e) {
     }
+    const db = fs.firestore(); //new 
     const item_id = req.params.itemid;
     const item_ref = itemColl.doc(item_id);
     const doc = await item_ref.get();
-    let itemData = doc.data();
-    console.log(itemData);
+    const itemData = doc.data();
+
     
-    //fetching data from
+    //fetching data from subcol
     const procure_ref = itemColl.doc(item_id).collection('procurement');
     hist_array= [] 
     await procure_ref.get().then(subCol => {
@@ -71,8 +72,52 @@ app.get('/item/:itemid', async function (req, res) {
     })
     console.log('Procurement data:', hist_array)
 
-    res.render('item', {itemData,hist_array});
+    let data = {
+        url: req.url, 
+        fs:db
+    }
+
+    res.render('item', {data, itemData, hist_array});
     });
+});
+
+
+/* POST METHOD - to submit data to a source */
+
+app.post('/itempage/:itemid', async function (req, res) {
+    try {
+        console.log(req.params.itemid);
+
+    } catch (e) {
+    }
+    const item_id = req.params.itemid;
+    const item_ref = itemColl.doc(item_id);
+    const doc = await item_ref.get();
+    const itemData = doc.data();
+
+    if (!doc.exists) {
+        console.log('No such document!');
+    } else {
+        console.log('Document data:', doc.data());
+    }
+
+    console.log(req.body)
+    var datainput = {
+        Quantity: Number(req.body.quantity),
+        dateCreated : new Date()
+    }
+
+    const db = fs.firestore();
+    const item_proc = db.collection('items').doc(item_id).collection('procurement').add(datainput);
+
+    let data = {
+        url: req.url,
+        itemData: doc.data(),
+        id: item_id,
+        //procId: proc_id,
+        fs:fs
+    }
+    res.render('item', data);
 });
 
 

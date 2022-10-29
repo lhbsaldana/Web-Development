@@ -152,12 +152,11 @@
                                                   <p>Description: <%= itemData["description"] %>
                                                 </p>
                                                 <br>
-                                                <form>
-                                                    <label>Enter Procurement Count: </label>
-                                                    <input type ="number" id="AddBox"></input>
-                                                    <input type = 'button' onclick ="addRow()" value = "Add data"></input>
-                                                    <button onclick="myDeleteFunction()">Delete row</button>  
-                                                </form> 
+                                                  <form action="/itempage/<%=id%>" method="POST">
+                                                        <label>Enter Procurement Count: </label>
+                                                        <input id="Procbox" type="number" name="quantity"></input>
+                                                        <input id="Insbtn" type = 'submit' value = "Add"></input>
+                                                </form>
                                                 <div class="table-responsive-md"></div>
                                                 <table class="table table-bordered" border="2" cellspacing="4" cellpadding="3" id ="myTable" >
                                                     <thead>
@@ -178,7 +177,7 @@
                                                     <% } %> 
                                                 </table>
                                                 <p id="totalQty">Total Quantity: <%= totalQty%> kilos </p> 
-                                        <script>
+                                        <script type = "module">
                                             function addRow() {
                                                     var table =  document.getElementById("myTable");
                                                     var qty = document.getElementById("AddBox").value*1;
@@ -197,7 +196,44 @@
                                                     function myDeleteFunction() {
                                                     document.getElementById("myTable").deleteRow(-1);
                                                     }
-                                        </script>
+                                            // Import the functions you need from the SDKs you need
+                                            import { initializeApp } from "https://www.gstatic.com/firebasejs/9.12.1/firebase-app.js";
+                                           // Import the functions you need from the SDKs you need
+                                            // TODO: Add SDKs for Firebase products that you want to use
+                                            // https://firebase.google.com/docs/web/setup#available-libraries
+
+                                            // Your web app's Firebase configuration
+                                            const firebaseConfig = {
+                                              apiKey: "AIzaSyCpe4rXF_u894lZAxoqbGrCgS_ETYhzLWc",
+                                              authDomain: "organic-vegetables-f858e.firebaseapp.com",
+                                              projectId: "organic-vegetables-f858e",
+                                              storageBucket: "organic-vegetables-f858e.appspot.com",
+                                              messagingSenderId: "282919038334",
+                                              appId: "1:282919038334:web:24ed6c11c83fd6aaa4972f"
+                                            };
+
+                                            // Initialize Firebase
+                                            const app = initializeApp(firebaseConfig);
+
+                                            import {
+                                                getFirestore, doc, getDoc, setDoc, collection, addDoc, updateDoc, deleteDoc, deleteField
+                                            }
+                                            from "https://www.gstatic.com/firebasejs/9.12.1/firebase-firestore.js";
+
+                                            var fs = require("firebase-admin");
+                                            const db = fs.firestore();
+                                            const messageRef = db.collection('items').doc(id).collection('procurement');
+
+
+                                            //-- references --//
+                                            let ProcBox = document.getElementById("Procbox");
+                                            let insBtn = document.getElementById("Insbtn");
+
+                                           
+                                            insBtn.addEventListener("click", AddDocument_AutoID);
+
+                                      </script>
+                                      
 
                                 </div>
                             </div>
