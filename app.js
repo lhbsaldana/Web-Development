@@ -3,6 +3,8 @@
 const express = require('express'); 
 var app = express(); 
 const path = require('path'); 
+app.use(express.json()); //NEEDED
+app.use(express.urlencoded()); //NEEDED
 
 // app.set('pages',path.join(__dirname, '/pages'));
 app.set('views', __dirname + '/pages');
@@ -86,18 +88,9 @@ app.post('/item/:itemid', async function (req, res) {
 
     } catch (e) {
     }
-    const item_id = req.params.itemid;
+    const item_id = req.params.itemid; 
     const item_ref = itemColl.doc(item_id);
     const doc = await item_ref.get();
-    const itemData = doc.data();
-
-    const procure_ref = itemColl.doc(item_id).collection('procurement');
-    hist_array= [] 
-    await procure_ref.get().then(subCol => {
-        subCol.docs.forEach(element => {
-         hist_array.push(element.data()); 
-    })
-    });
 
     if (!doc.exists) {
         console.log('No such document!');
@@ -123,7 +116,7 @@ app.post('/item/:itemid', async function (req, res) {
     }
 
 
-    res.render('item', {item_id,itemData,hist_array});
+    res.render('item', data);
 });
 
 
