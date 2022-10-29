@@ -154,9 +154,9 @@
                                                   <p>Description: <%= itemData["description"] %>
                                                 </p>
                                                 <br>
-                                                  <form id = "addNew" action="/item/<%=procid %>" method="POST">
+                                                  <form id = "addNew" action="<%=id%>" method="POST">
                                                         <label>Enter Procurement Count: </label>
-                                                        <input id="Procbox" type="number" name= "qty">
+                                                        <input id="Procbox" type="number" name= "qty"></input>
                                                         <input id="Insbtn" type = 'submit' value = "Add"></input>
                                                 </form>
                                                 <div class="table-responsive-md"></div>

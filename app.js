@@ -67,9 +67,8 @@ app.get('/item/:itemid', async function (req, res) {
 
     
     //fetching data from subcol
-    const procure_ref = itemColl.doc(item_id).collection('procurement');
-    const citiesRef = db.collection('items').doc(item_id).collection('procurement');
-    const snapshot = await citiesRef.get();
+    const procure_ref = db.collection('items').doc(item_id).collection('procurement');
+    const snapshot = await procure_ref.get();
     proc_array = []
     snapshot.forEach(doc => {
         console.log(doc.data());
@@ -122,7 +121,7 @@ app.post('/itempage/:itemid', async function (req, res) {
     console.log(req.body)
     // const items = await ingColl.get();
     var datainput = {
-        procurementTrans: Number(req.body.quantity),
+        Quanity: Number(req.body.ProcBox),
         dateCreated : new Date()
     }
 
