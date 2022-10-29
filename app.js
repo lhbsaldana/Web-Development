@@ -116,7 +116,7 @@ app.post('/item/:itemid', async function (req, res) {
     }
 
 
-    res.render('item', data);
+    res.render('item', {item_id,data});
 });
 
 
