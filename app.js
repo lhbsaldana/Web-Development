@@ -72,19 +72,15 @@ app.get('/item/:itemid', async function (req, res) {
     })
     console.log('Procurement data:', hist_array)
 
-    let data = {
-        url: req.url, 
-        fs:db
-    }
 
-    res.render('item', {data, itemData, hist_array});
+    res.render('item', {itemData, hist_array});
     });
 });
 
 
 /* POST METHOD - to submit data to a source */
 
-app.post('/itempage/:itemid', async function (req, res) {
+app.post('/item/:itemid', async function (req, res) {
     try {
         console.log(req.params.itemid);
 
@@ -94,6 +90,14 @@ app.post('/itempage/:itemid', async function (req, res) {
     const item_ref = itemColl.doc(item_id);
     const doc = await item_ref.get();
     const itemData = doc.data();
+
+    const procure_ref = itemColl.doc(item_id).collection('procurement');
+    hist_array= [] 
+    await procure_ref.get().then(subCol => {
+        subCol.docs.forEach(element => {
+         hist_array.push(element.data()); 
+    })
+    });
 
     if (!doc.exists) {
         console.log('No such document!');
@@ -117,7 +121,9 @@ app.post('/itempage/:itemid', async function (req, res) {
         //procId: proc_id,
         fs:fs
     }
-    res.render('item', data);
+
+
+    res.render('item', {item_id,itemData,hist_array});
 });
 
 
