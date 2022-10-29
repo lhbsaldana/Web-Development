@@ -154,7 +154,7 @@
                                                   <p>Description: <%= itemData["description"] %>
                                                 </p>
                                                 <br>
-                                                  <form id = "addNew" action="/item/itemid">
+                                                  <form id = "addNew" action="/item/<%=procid %>" method="POST">
                                                         <label>Enter Procurement Count: </label>
                                                         <input id="Procbox" type="number" name= "qty">
                                                         <input id="Insbtn" type = 'submit' value = "Add"></input>
@@ -215,7 +215,6 @@
 
                                            
                                             // Writing data to firestore 
-                                            /*
                                             const form = document.querySelector('#addNew'); 
                                             form.addEventListener('submit',(e) =>{
                                             e.preventDefault(); 
@@ -224,7 +223,7 @@
                                                 Quantity: form.qty.value*1,
                                                 dateCreated : new Date()
                                             })})
-                                            console.log("Succesfully added!"); */
+                                            console.log("Succesfully added!"); 
 
                                       </script>
                                       

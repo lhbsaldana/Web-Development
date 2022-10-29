@@ -63,12 +63,32 @@ app.get('/item/:itemid', async function (req, res) {
     const item_id = req.params.itemid;
     const item_ref = itemColl.doc(item_id);
     const doc = await item_ref.get();
-    const itemData = doc.data();
+
 
     
     //fetching data from subcol
     const procure_ref = itemColl.doc(item_id).collection('procurement');
-    hist_array= [] 
+    const citiesRef = db.collection('items').doc(item_id).collection('procurement');
+    const snapshot = await citiesRef.get();
+    proc_array = []
+    snapshot.forEach(doc => {
+        console.log(doc.data());
+        proc_array.push(doc.data())
+    });
+
+    let data = {
+        url: req.url,
+        itemData: doc.data(),
+        id: item_id,
+        procid: doc.id,
+        hist_array: proc_array,
+        fs: fs
+    }
+
+    res.render('item', data);
+});
+    
+    /*hist_array= [] 
     await procure_ref.get().then(subCol => {
         subCol.docs.forEach(element => {
          hist_array.push(element.data()); 
@@ -78,35 +98,46 @@ app.get('/item/:itemid', async function (req, res) {
 
     res.render('item', {itemData, hist_array});
     });
-});
+});*/
 
 
 /* POST METHOD - to submit data to a source */
 
-app.post('/item/:itemid', async function (req, res) {
+app.post('/itempage/:itemid', async function (req, res) {
     try {
         console.log(req.params.itemid);
 
     } catch (e) {
     }
-    const item_id = req.params.itemid; 
+    const item_id = req.params.itemid;
     const item_ref = itemColl.doc(item_id);
     const doc = await item_ref.get();
+
     if (!doc.exists) {
         console.log('No such document!');
     } else {
         console.log('Document data:', doc.data());
     }
+
+    console.log(req.body)
+    // const items = await ingColl.get();
     var datainput = {
         procurementTrans: Number(req.body.quantity),
         dateCreated : new Date()
     }
-    console.log(req.body)
+
     const db = fs.firestore();
     const item_proc = db.collection('items').doc(item_id).collection('procurement').add(datainput);
-    });
 
-    res.render('item', {item_id,itemData});
+    let data = {
+        url: req.url,
+        itemData: doc.data(),
+        id: item_id,
+        fs:fs
+    }
+    res.render('item', data);
+});
+
 
 
 
