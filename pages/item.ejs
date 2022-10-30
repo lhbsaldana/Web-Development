@@ -159,6 +159,7 @@
                                                         <input id="Procbox" type="number" name= "ProcBox"></input>
                                                         <input type = 'submit' value = "Add"></input>
                                                 </form>
+                                                <!-- Sorting table by time/date-->
                                                 <div class="table-responsive-md"></div>
                                                 <table class="table table-bordered" border="2" cellspacing="4" cellpadding="3" id ="myTable" >
                                                     <thead>
@@ -213,17 +214,7 @@
                                             let ProcBox = document.getElementById("Procbox").value*1;
                                             let insBtn = document.getElementById("Insbtn");
 
-                                           
-                                            // Writing data to firestore 
-                                            /*const form = document.querySelector('#addNew'); 
-                                            form.addEventListener('submit',(e) =>{
-                                            e.preventDefault(); 
-                                            const db = fs.firestore();
-                                            const item_proc = db.collection('items').doc(item_id).collection('procurement').add({
-                                                Quantity: form.ProcBox,
-                                                dateCreated : new Date()
-                                            })})
-                                            console.log("Succesfully added!"); */
+
 
                                       </script>
                                       
