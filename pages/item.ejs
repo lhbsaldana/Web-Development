@@ -154,10 +154,10 @@
                                                   <p>Description: <%= itemData["description"] %>
                                                 </p>
                                                 <br>
-                                                  <form id = "addNew" action="<%=id%>" method="POST">
+                                                  <form id = "addNew" action= "/item/<%=id%>" method="POST">
                                                         <label>Enter Procurement Count: </label>
-                                                        <input id="Procbox" type="number" name= "qty"></input>
-                                                        <input id="Insbtn" type = 'submit' value = "Add"></input>
+                                                        <input id="Procbox" type="number" name= "ProcBox"></input>
+                                                        <input type = 'submit' value = "Add"></input>
                                                 </form>
                                                 <div class="table-responsive-md"></div>
                                                 <table class="table table-bordered" border="2" cellspacing="4" cellpadding="3" id ="myTable" >
@@ -169,13 +169,13 @@
                                                     </thead>
                                                     <tbody>
                                                         <% var totalQty = 0; %>
-                                                        <% for (var index=0;  index < hist_array.length; index++){ %> 
+                                                        <% for (var index=0;  index < proc_array.length; index++){ %> 
                                                         <tr>
-                                                            <td style="text-align:left"><%= hist_array[index].dateCreated.toDate();%></td>
-                                                            <td style="text-align:justify"><%= (hist_array[index].Quantity);%></td>              
+                                                            <td style="text-align:left"><%= proc_array[index].dateCreated.toDate();%></td>
+                                                            <td style="text-align:justify"><%= (proc_array[index].Quantity);%></td>              
                                                         </tr>
                                                     </tbody>  
-                                                    <p><% totalQty += (hist_array[index].Quantity);%> </p>
+                                                    <p><% totalQty += (proc_array[index].Quantity);%> </p>
                                                     <% } %> 
                                                 </table>
                                                 <p id="totalQty">Total Quantity: <%= totalQty%> kilos </p> 
@@ -210,20 +210,20 @@
                                             
 
                                             //-- references --//
-                                            let ProcBox = document.getElementById("Procbox");
+                                            let ProcBox = document.getElementById("Procbox").value*1;
                                             let insBtn = document.getElementById("Insbtn");
 
                                            
                                             // Writing data to firestore 
-                                            const form = document.querySelector('#addNew'); 
+                                            /*const form = document.querySelector('#addNew'); 
                                             form.addEventListener('submit',(e) =>{
                                             e.preventDefault(); 
                                             const db = fs.firestore();
                                             const item_proc = db.collection('items').doc(item_id).collection('procurement').add({
-                                                Quantity: form.qty.value*1,
+                                                Quantity: form.ProcBox,
                                                 dateCreated : new Date()
                                             })})
-                                            console.log("Succesfully added!"); 
+                                            console.log("Succesfully added!"); */
 
                                       </script>
                                       

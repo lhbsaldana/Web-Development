@@ -2,6 +2,7 @@
 
 const express = require('express'); 
 var app = express(); 
+const router = express.Router(); 
 const path = require('path'); 
 app.use(express.json()); //NEEDED
 app.use(express.urlencoded()); //NEEDED
@@ -52,23 +53,26 @@ app.get('/', async function (req, res) {
 
 
 /* GET METHOD - to fetch data from a source */
+
 app.get('/item/:itemid', async function (req, res) {
-    //fetching data from items collection
     try {
         console.log(req.params.itemid);
 
     } catch (e) {
     }
-    const db = fs.firestore(); //new 
+    const db = fs.firestore();
     const item_id = req.params.itemid;
     const item_ref = itemColl.doc(item_id);
     const doc = await item_ref.get();
 
+    if (!doc.exists) {
+        console.log('No such document!');
+    } else {
+        console.log('Document data:', doc.data());
+    }
 
-    
-    //fetching data from subcol
-    const procure_ref = db.collection('items').doc(item_id).collection('procurement');
-    const snapshot = await procure_ref.get();
+    const citiesRef = db.collection('items').doc(item_id).collection('procurement');
+    const snapshot = await citiesRef.get();
     proc_array = []
     snapshot.forEach(doc => {
         console.log(doc.data());
@@ -80,29 +84,15 @@ app.get('/item/:itemid', async function (req, res) {
         itemData: doc.data(),
         id: item_id,
         procid: doc.id,
-        hist_array: proc_array,
+        proc_array: proc_array,
         fs: fs
     }
 
     res.render('item', data);
 });
-    
-    /*hist_array= [] 
-    await procure_ref.get().then(subCol => {
-        subCol.docs.forEach(element => {
-         hist_array.push(element.data()); 
-    })
-    console.log('Procurement data:', hist_array)
 
 
-    res.render('item', {itemData, hist_array});
-    });
-});*/
-
-
-/* POST METHOD - to submit data to a source */
-
-app.post('/itempage/:itemid', async function (req, res) {
+app.post('/item/:itemid', async function (req, res) {
     try {
         console.log(req.params.itemid);
 
@@ -121,7 +111,7 @@ app.post('/itempage/:itemid', async function (req, res) {
     console.log(req.body)
     // const items = await ingColl.get();
     var datainput = {
-        Quanity: Number(req.body.ProcBox),
+        Quantity: Number(req.body.ProcBox),
         dateCreated : new Date()
     }
 
@@ -138,26 +128,4 @@ app.post('/itempage/:itemid', async function (req, res) {
 });
 
 
-
-
-
-
-/*fetching data from procurement subcollection
-    const items = await itemColl.get();
-    if (items.length > 0){
-        items.forEach(product =>{
-            product.collection('users').doc(product.id)
-            .collection('procurement')
-            .get()
-            .then(subCol => {
-                subCol.docs.forEach(element => {
-                    console.log(element.data()); 
-                }
-            )}
-        )}
-    )}
-
-})
-res.render('item', {item : item_data, procure: procure_hist});
- */
 
